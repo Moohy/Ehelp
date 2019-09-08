@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		10417143231D0692006EE103 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417142231D0692006EE103 /* AppDelegate.swift */; };
-		10417145231D0692006EE103 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417144231D0692006EE103 /* ViewController.swift */; };
+		10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417144231D0692006EE103 /* EmergencyTypeVC.swift */; };
 		10417148231D0692006EE103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10417146231D0692006EE103 /* Main.storyboard */; };
 		1041714A231D0695006EE103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10417149231D0695006EE103 /* Assets.xcassets */; };
 		1041714D231D0695006EE103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1041714B231D0695006EE103 /* LaunchScreen.storyboard */; };
 		10417158231D0695006EE103 /* EhelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417157231D0695006EE103 /* EhelpTests.swift */; };
 		10417163231D0695006EE103 /* EhelpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417162231D0695006EE103 /* EhelpUITests.swift */; };
+		1041717423224B4C006EE103 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717323224B4C006EE103 /* Report.swift */; };
+		1041717623225028006EE103 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717523225028006EE103 /* Global.swift */; };
+		104171782322570E006EE103 /* ReportDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104171772322570E006EE103 /* ReportDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		1041713F231D0692006EE103 /* Ehelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ehelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10417142231D0692006EE103 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10417144231D0692006EE103 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		10417144231D0692006EE103 /* EmergencyTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyTypeVC.swift; sourceTree = "<group>"; };
 		10417147231D0692006EE103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10417149231D0695006EE103 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1041714C231D0695006EE103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,9 @@
 		1041715E231D0695006EE103 /* EhelpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EhelpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10417162231D0695006EE103 /* EhelpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EhelpUITests.swift; sourceTree = "<group>"; };
 		10417164231D0695006EE103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1041717323224B4C006EE103 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
+		1041717523225028006EE103 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		104171772322570E006EE103 /* ReportDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +103,11 @@
 		10417141231D0692006EE103 /* Ehelp */ = {
 			isa = PBXGroup;
 			children = (
+				10417172231D06B5006EE103 /* view */,
+				10417171231D06AB006EE103 /* model */,
+				10417170231D06A0006EE103 /* view model */,
 				10417142231D0692006EE103 /* AppDelegate.swift */,
-				10417144231D0692006EE103 /* ViewController.swift */,
-				10417146231D0692006EE103 /* Main.storyboard */,
 				10417149231D0695006EE103 /* Assets.xcassets */,
-				1041714B231D0695006EE103 /* LaunchScreen.storyboard */,
 				1041714E231D0695006EE103 /* Info.plist */,
 			);
 			path = Ehelp;
@@ -123,6 +129,33 @@
 				10417164231D0695006EE103 /* Info.plist */,
 			);
 			path = EhelpUITests;
+			sourceTree = "<group>";
+		};
+		10417170231D06A0006EE103 /* view model */ = {
+			isa = PBXGroup;
+			children = (
+				10417144231D0692006EE103 /* EmergencyTypeVC.swift */,
+				104171772322570E006EE103 /* ReportDetailsVC.swift */,
+			);
+			path = "view model";
+			sourceTree = "<group>";
+		};
+		10417171231D06AB006EE103 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1041717323224B4C006EE103 /* Report.swift */,
+				1041717523225028006EE103 /* Global.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		10417172231D06B5006EE103 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				10417146231D0692006EE103 /* Main.storyboard */,
+				1041714B231D0695006EE103 /* LaunchScreen.storyboard */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10417145231D0692006EE103 /* ViewController.swift in Sources */,
+				1041717623225028006EE103 /* Global.swift in Sources */,
+				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
+				104171782322570E006EE103 /* ReportDetailsVC.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
+				1041717423224B4C006EE103 /* Report.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
