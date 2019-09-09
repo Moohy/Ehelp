@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
-
+import UIKit.UIAlertController
 class ReportDetailsVC: UIViewController {
     var report: Report!
     let locationManager = CLLocationManager()
@@ -18,6 +18,13 @@ class ReportDetailsVC: UIViewController {
     
     
     @IBAction func submitButton(_ sender: Any) {
+        
+        let alertController:UIAlertController = UIAlertController(title: "Message", message: "Report has been filed successfully", preferredStyle: UIAlertController.Style.alert)
+        
+        let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
+        
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
