@@ -15,6 +15,11 @@ class ReportDetailsVC: UIViewController {
     let locationManager = CLLocationManager()
 
     @IBOutlet var mapView: MKMapView!
+    
+    
+    @IBAction func submitButton(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
