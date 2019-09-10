@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10413B63232657E10006AE88 /* TableCellReportDetailsVC.swift */; };
 		10417143231D0692006EE103 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417142231D0692006EE103 /* AppDelegate.swift */; };
 		10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417144231D0692006EE103 /* EmergencyTypeVC.swift */; };
 		10417148231D0692006EE103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10417146231D0692006EE103 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10413B63232657E10006AE88 /* TableCellReportDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellReportDetailsVC.swift; sourceTree = "<group>"; };
 		1041713F231D0692006EE103 /* Ehelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ehelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10417142231D0692006EE103 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10417144231D0692006EE103 /* EmergencyTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyTypeVC.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				10417144231D0692006EE103 /* EmergencyTypeVC.swift */,
 				104171772322570E006EE103 /* ReportDetailsVC.swift */,
+				10413B63232657E10006AE88 /* TableCellReportDetailsVC.swift */,
 			);
 			path = "view model";
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			files = (
 				1041717623225028006EE103 /* Global.swift in Sources */,
 				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
+				10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */,
 				104171782322570E006EE103 /* ReportDetailsVC.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				1041717423224B4C006EE103 /* Report.swift in Sources */,
