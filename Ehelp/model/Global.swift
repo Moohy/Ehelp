@@ -9,6 +9,7 @@
 import Foundation
 
 class Global{
+    private init() { }
     static let shared = Global()
-    var reports: [Report]?
+    var reports = [Report]()
 }

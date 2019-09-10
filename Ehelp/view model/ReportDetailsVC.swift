@@ -12,6 +12,7 @@ import CoreLocation
 import UIKit.UIAlertController
 class ReportDetailsVC: UIViewController {
     var report: Report!
+
     let locationManager = CLLocationManager()
 
     @IBOutlet var mapView: MKMapView!
@@ -49,6 +50,12 @@ class ReportDetailsVC: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
+        
+        report.date = "23-2-2020"
+        Global.shared.reports.append(report)
+        Global.shared.reports.append(report)
+        print(Global.shared.reports.count)
+        print(report.date!)
 
         // Do any additional setup after loading the view.
     }

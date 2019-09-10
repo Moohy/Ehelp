@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 class TableCellReportDetailsVC: UIViewController {
-
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,8 +19,7 @@ class TableCellReportDetailsVC: UIViewController {
     }
    
     
-    @IBOutlet weak var mapView: MKMapView!
-    
+
     /*
     // MARK: - Navigation
 
