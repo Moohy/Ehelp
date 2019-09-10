@@ -13,8 +13,8 @@ import CoreLocation
 class ReportDetailsVC: UIViewController {
     var report: Report!
     let locationManager = CLLocationManager()
-
     @IBOutlet var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

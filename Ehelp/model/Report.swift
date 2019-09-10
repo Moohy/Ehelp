@@ -29,6 +29,7 @@ struct Report {
     private var longitude:      Double?
     private var message:        String?
     private var attachent:      String?
+    private var dateUploaded:   Date?
     
     init(){
         
