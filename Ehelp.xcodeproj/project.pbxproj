@@ -18,6 +18,7 @@
 		1041717423224B4C006EE103 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717323224B4C006EE103 /* Report.swift */; };
 		1041717623225028006EE103 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717523225028006EE103 /* Global.swift */; };
 		104171782322570E006EE103 /* ReportDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104171772322570E006EE103 /* ReportDetailsVC.swift */; };
+		10B49CD7232B5F0800374751 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B49CD6232B5F0800374751 /* DetailsVC.swift */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		1041717323224B4C006EE103 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		1041717523225028006EE103 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		104171772322570E006EE103 /* ReportDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDetailsVC.swift; sourceTree = "<group>"; };
+		10B49CD6232B5F0800374751 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 				10413B63232657E10006AE88 /* TableCellReportDetailsVC.swift */,
 				10C4238C232779B200CFD15A /* ProfileCell.swift */,
 				10C4238E232779F300CFD15A /* ProfileTableVC.swift */,
+				10B49CD6232B5F0800374751 /* DetailsVC.swift */,
 			);
 			path = "view model";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */,
 				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
 				10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */,
+				10B49CD7232B5F0800374751 /* DetailsVC.swift in Sources */,
 				104171782322570E006EE103 /* ReportDetailsVC.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				1041717423224B4C006EE103 /* Report.swift in Sources */,

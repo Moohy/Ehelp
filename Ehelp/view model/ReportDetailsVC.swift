@@ -17,17 +17,41 @@ class ReportDetailsVC: UIViewController {
 
     @IBOutlet var mapView: MKMapView!
     
-    
-    @IBAction func submitButton(_ sender: Any) {
+    @IBAction func nextTapped(_ sender: Any) {
         
-        let alertController:UIAlertController = UIAlertController(title: "Message", message: "Report has been filed successfully", preferredStyle: UIAlertController.Style.alert)
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Details") as! DetailsVC
+        nextVC.report = report
+        self.navigationController?.pushViewController(nextVC, animated: true)
         
-        let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
-        
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func gesRec(_ sender: Any) {
+        
+        if (sender as AnyObject).state == .began {
+            let annotation = MKPointAnnotation()
+            let locationInView = (sender as AnyObject).location(in: mapView)
+            let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            addAnnotation(location: locationOnMap)
+        }
+        
+    }
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        mapView.removeAnnotation(pin)
+//
+//        let location = locations.last! as CLLocation
+//
+//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+//
+//        //set region on the map
+//        mapView.setRegion(region, animated: true)
+//
+//        pin.coordinate = location.coordinate
+//        mapView.addAnnotation(pin)
+//
+//    }
+//
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,20 +74,24 @@ class ReportDetailsVC: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-        
-        report.date = "23-2-2020"
-        Global.shared.reports.append(report)
-        Global.shared.reports.append(report)
-        print(Global.shared.reports.count)
-        print(report.date!)
 
         // Do any additional setup after loading the view.
     }
     
-    
-    
-    
-    
+    func addAnnotation(location: CLLocationCoordinate2D){
+        let allAnnotations = self.mapView.annotations
+        //        annotation2 = loc
+        self.mapView.removeAnnotations(allAnnotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "Some Title"
+        annotation.subtitle = "Some Subtitle"
+        self.mapView.addAnnotation(annotation)
+        
+        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+//        report.message = "Mohammed"
+        report.addMessage(msg: "Mohammdeeeen")
+    }
 
 }
 
@@ -82,10 +110,8 @@ extension ReportDetailsVC: CLLocationManagerDelegate,MKMapViewDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = locValue
-//        annotation.title = "Javed Multani"
         annotation.subtitle = "current location"
         mapView.addAnnotation(annotation)
-        
-//        centerMap(locValue)
+        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
 }

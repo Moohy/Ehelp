@@ -44,8 +44,8 @@ struct Report {
         self.longitude = long
     }
     
-    mutating func addMessage(message: String){
-        self.message = message
+    mutating func addMessage(msg: String){
+        self.message = msg
     }
     
     mutating func addAttachment(attach: String){

@@ -10,10 +10,12 @@ import UIKit
 import MapKit
 class TableCellReportDetailsVC: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.text = "hey"
 
         // Do any additional setup after loading the view.
     }
