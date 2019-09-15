@@ -13,27 +13,22 @@ class ProfileTableVC: UITableViewController {
     var reports : [Report]? {
         return Global.shared.reports
     }
-
-    @IBOutlet var profileCell: ProfileCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "Reports"
+        self.tableView.reloadData()
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return reports?.count ?? 0
     }
 
@@ -54,13 +49,11 @@ class ProfileTableVC: UITableViewController {
         if cell != nil {
             let tableCellReportDetails = self.storyboard?.instantiateViewController(withIdentifier: "tableCellReportDetails") as! TableCellReportDetailsVC
             
-            tableCellReportDetails.textView.text = "Mohammed"
-        
-//            print(reports?[indexPath.row].message!)
-//            print(reports?[indexPath.row].date)
-//            print(reports?[indexPath.row])
-            
             //TODO: value needs to be passed to the next view here!
+            
+            tableCellReportDetails.message = reports![indexPath.row].message!
+            tableCellReportDetails.latitude = reports![indexPath.row].latitude!
+            tableCellReportDetails.logitude = reports![indexPath.row].longitude!
             
             self.navigationController?.pushViewController(tableCellReportDetails, animated: true)
             

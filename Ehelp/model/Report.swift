@@ -24,11 +24,11 @@ enum Emergency: String {
 }
 
 struct Report {
-    var emergencyType:          Emergency?
+    var emergencyType:  Emergency?
     var latitude:       Double?
     var longitude:      Double?
     var message:        String?
-    var attachment:      String?
+    var attachment:     String?
     public var date:    String? // TODO: needs to be a class of data
     
     init(){

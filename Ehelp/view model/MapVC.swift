@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import UIKit.UIAlertController
 
-class ReportDetailsVC: UIViewController {
+class MapVC: UIViewController {
     
     var report: Report!
 
@@ -20,40 +20,21 @@ class ReportDetailsVC: UIViewController {
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func nextTapped(_ sender: Any) {
-        
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Details") as! DetailsVC
         nextVC.report = report
         self.navigationController?.pushViewController(nextVC, animated: true)
-        
     }
     
     @IBAction func gesRec(_ sender: Any) {
         
         if (sender as AnyObject).state == .began {
-            let annotation = MKPointAnnotation()
             let locationInView = (sender as AnyObject).location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
             addAnnotation(location: locationOnMap)
         }
         
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        mapView.removeAnnotation(pin)
-//
-//        let location = locations.last! as CLLocation
-//
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//
-//        //set region on the map
-//        mapView.setRegion(region, animated: true)
-//
-//        pin.coordinate = location.coordinate
-//        mapView.addAnnotation(pin)
-//
-//    }
-//
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,7 +58,6 @@ class ReportDetailsVC: UIViewController {
             mapView.setCenter(coor, animated: true)
         }
 
-        // Do any additional setup after loading the view.
     }
     
     func addAnnotation(location: CLLocationCoordinate2D){
@@ -96,9 +76,7 @@ class ReportDetailsVC: UIViewController {
 }
 
 
-extension ReportDetailsVC: CLLocationManagerDelegate,MKMapViewDelegate {
-    
-    
+extension MapVC: CLLocationManagerDelegate,MKMapViewDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         
@@ -113,6 +91,5 @@ extension ReportDetailsVC: CLLocationManagerDelegate,MKMapViewDelegate {
         annotation.subtitle = "current location"
         mapView.addAnnotation(annotation)
         report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
-//        report.addMessage(msg: "Mohammdeeeen")
     }
 }

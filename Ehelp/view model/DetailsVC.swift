@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NaturalLanguage
 
 class DetailsVC: UIViewController {
     
@@ -23,16 +24,16 @@ class DetailsVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Location"
+    }
+    
     @IBAction func submitButton(_ sender: Any) {
         
         // add date, message, location to the repor array
         
         report.date = "23-2-2020"
-        report.addMessage(msg: message.text)
-        Global.shared.reports.append(report)
-        
-        
-        
+
         // check if description length is less than 10 or greater than 160
         // if so, then alert user to meet the specified length
         if message.text.count < 10 || message.text.count > 160 {
@@ -43,14 +44,28 @@ class DetailsVC: UIViewController {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         }
-    
         
+        // language detection
+        let detectedLang = languageDetection(for: message.text)
+        
+        // Add message after validation
+        if detectedLang! == "English" {
+            report.addMessage(msg: message.text)
+        } else {
+//             Do translation
+        }
+        
+        Global.shared.reports.append(report)
         
         // show message if criteria are met
         let alertController:UIAlertController = UIAlertController(title: "Message", message: "Report has been filed successfully", preferredStyle: UIAlertController.Style.alert)
         
         let alertAction = UIAlertAction(title: "Back", style: .cancel, handler:
         { action in
+            //switch tab bar
+//            let vc: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+//            vc.selectedIndex = 1
+//            self.present(vc, animated: true, completion: nil)
             self.navigationController?.popToRootViewController(animated: true)
         } )
         
@@ -60,15 +75,11 @@ class DetailsVC: UIViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func languageDetection(for string: String) -> String? {
+        let recog = NLLanguageRecognizer()
+        recog.processString(string)
+        guard let languageCode = recog.dominantLanguage?.rawValue else { return nil }
+        let detectedLangauge = Locale.current.localizedString(forIdentifier: languageCode)
+        return detectedLangauge
     }
-    */
-
 }
