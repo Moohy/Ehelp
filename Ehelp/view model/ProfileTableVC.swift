@@ -53,9 +53,12 @@ class ProfileTableVC: UITableViewController {
         
         if cell != nil {
             let tableCellReportDetails = self.storyboard?.instantiateViewController(withIdentifier: "tableCellReportDetails") as! TableCellReportDetailsVC
-//            tableCellReportDetails.textView.text += "M"
-            print(reports?[indexPath.row].message)
-            print(reports?[indexPath.row])
+            
+            tableCellReportDetails.textView.text = "Mohammed"
+        
+//            print(reports?[indexPath.row].message!)
+//            print(reports?[indexPath.row].date)
+//            print(reports?[indexPath.row])
             
             //TODO: value needs to be passed to the next view here!
             

@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 import UIKit.UIAlertController
+
 class ReportDetailsVC: UIViewController {
+    
     var report: Report!
 
     let locationManager = CLLocationManager()
@@ -89,8 +91,6 @@ class ReportDetailsVC: UIViewController {
         self.mapView.addAnnotation(annotation)
         
         report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
-//        report.message = "Mohammed"
-        report.addMessage(msg: "Mohammdeeeen")
     }
 
 }
@@ -113,5 +113,6 @@ extension ReportDetailsVC: CLLocationManagerDelegate,MKMapViewDelegate {
         annotation.subtitle = "current location"
         mapView.addAnnotation(annotation)
         report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+//        report.addMessage(msg: "Mohammdeeeen")
     }
 }

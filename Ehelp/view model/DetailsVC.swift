@@ -13,23 +13,40 @@ class DetailsVC: UIViewController {
     var report: Report!
 
     @IBOutlet weak var message: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        // Do any additional setup after loading the view.
+        // add border to the description text view
+        self.message.layer.borderColor = UIColor.lightGray.cgColor
+        self.message.layer.borderWidth = 1
+        
     }
     
     @IBAction func submitButton(_ sender: Any) {
         
-        report.date = "23-2-2020"
-//        report.addMessage(message: message.text)
-        Global.shared.reports.append(report)
-//        Global.shared.reports.append(report)
-//        print(Global.shared.reports.count)
-//        print(report.date!)
+        // add date, message, location to the repor array
         
+        report.date = "23-2-2020"
+        report.addMessage(msg: message.text)
+        Global.shared.reports.append(report)
+        
+        
+        
+        // check if description length is less than 10 or greater than 160
+        // if so, then alert user to meet the specified length
+        if message.text.count < 10 || message.text.count > 160 {
+            
+            let alertController:UIAlertController = UIAlertController(title: "Error", message: "Make sure you description is more than 10 characters and less than 160 characters", preferredStyle: UIAlertController.Style.alert)
+            
+             let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+        }
+    
+        
+        
+        // show message if criteria are met
         let alertController:UIAlertController = UIAlertController(title: "Message", message: "Report has been filed successfully", preferredStyle: UIAlertController.Style.alert)
         
         let alertAction = UIAlertAction(title: "Back", style: .cancel, handler:

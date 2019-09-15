@@ -9,14 +9,20 @@
 import UIKit
 import MapKit
 class TableCellReportDetailsVC: UIViewController {
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.text = "hey"
-
+        // add border to the description text view
+        self.textView.layer.borderColor = UIColor.lightGray.cgColor
+        self.textView.layer.borderWidth = 1
+        
+        
+        
+        
         // Do any additional setup after loading the view.
     }
    
