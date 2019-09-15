@@ -30,6 +30,8 @@ class MapVC: UIViewController {
         if (sender as AnyObject).state == .began {
             let locationInView = (sender as AnyObject).location(in: mapView)
             let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
             addAnnotation(location: locationOnMap)
         }
         
@@ -38,6 +40,11 @@ class MapVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.locationManager.requestAlwaysAuthorization()
         
         // For use in foreground
@@ -57,28 +64,8 @@ class MapVC: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-
-    }
-    
-    func addAnnotation(location: CLLocationCoordinate2D){
-        let allAnnotations = self.mapView.annotations
-        //        annotation2 = loc
-        self.mapView.removeAnnotations(allAnnotations)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Some Title"
-        annotation.subtitle = "Some Subtitle"
-        self.mapView.addAnnotation(annotation)
         
-        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
-    }
-
-}
-
-
-extension MapVC: CLLocationManagerDelegate,MKMapViewDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
         
         mapView.mapType = MKMapType.standard
         
@@ -88,8 +75,25 @@ extension MapVC: CLLocationManagerDelegate,MKMapViewDelegate {
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = locValue
-        annotation.subtitle = "current location"
+        annotation.subtitle = "Current Location"
         mapView.addAnnotation(annotation)
         report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
+    
+    func addAnnotation(location: CLLocationCoordinate2D){
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+//        annotation.title = "Some Title"
+//        annotation.subtitle = "Some Subtitle"
+        self.mapView.addAnnotation(annotation)
+        
+        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+    }
+
 }
+
+
+extension MapVC: CLLocationManagerDelegate,MKMapViewDelegate {
+
+}
+
