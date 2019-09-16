@@ -61,7 +61,7 @@ class DetailsVC: UIViewController {
              let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
-        }
+        } else {
         
         // language detection
         let detectedLang = languageDetection(for: message.text)
@@ -72,7 +72,7 @@ class DetailsVC: UIViewController {
         } else {
 //             Do translation
         }
-        
+        }
         Global.shared.reports.append(report)
         
         // show message if criteria are met

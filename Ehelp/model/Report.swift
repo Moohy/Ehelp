@@ -8,18 +8,31 @@
 
 import Foundation
 
+
+struct CustomDate {
+    // Marked as optional as invalid construction data will produce a nil value
+    private (set) var date:Date?
+    
+    init(day:Int, month:Int, year:Int, hour:Int = 0, minute:Int = 0,
+         timeZone:TimeZone = .current) {
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = day
+        dateComponents.timeZone = timeZone
+        dateComponents.minute = minute
+        let userCalnedar = Calendar.current
+        
+        date = userCalnedar.date(from: dateComponents)
+    }
+}
+
+
 enum Emergency: String {
     case    police = "Police",
             fireFighter = "Fire Fighter",
             ambulance = "Ambulance"
-    
-//    var emergency: String {
-//        switch self{
-//        case .police:       return "Police";
-//        case .fireFighter:  return "Fire Fighter";
-//        case .ambulance:    return "Ambulance";
-//        }
-//    }
     
 }
 

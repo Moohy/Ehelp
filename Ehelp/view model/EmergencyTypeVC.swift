@@ -9,6 +9,10 @@ class EmergencyTypeVC: UIViewController {
     }
 
     
+    @IBAction func signoutButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func police(_ sender: Any) {
         report.addEmergency(type: Emergency.police)
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
