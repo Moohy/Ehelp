@@ -15,7 +15,7 @@ class EmergencyTypeVC: UIViewController {
     
     @IBAction func police(_ sender: Any) {
         report.addEmergency(type: Emergency.police)
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         nextVC.report = report
         self.navigationController?.pushViewController(nextVC, animated: true)
 //        self.present(nextViewController, animated:true, completion:nil)
@@ -23,14 +23,14 @@ class EmergencyTypeVC: UIViewController {
     
     @IBAction func fireFighter(_ sender: Any) {
         report.addEmergency(type: Emergency.fireFighter)
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         nextVC.report = report
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @IBAction func ambulance(_ sender: Any) {
         report.addEmergency(type: Emergency.ambulance)
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         nextVC.report = report
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
