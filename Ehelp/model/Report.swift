@@ -36,20 +36,17 @@ enum Emergency: String {
     
 }
 
-struct Report {
-    var emergencyType:  Emergency?
-    var latitude:       Double?
-    var longitude:      Double?
-    var message:        String?
-    var attachment:     String?
-    public var date:    String? // TODO: needs to be a class of data
-    
-    init(){
-        
-    }
+struct Report: Codable {
+    var emergencyType:  String!
+    var latitude:       Double!
+    var longitude:      Double!
+    var message:        String!
+    var attachment:     String!
+    public var date:    String! // TODO: needs to be a class of data
+
     
     mutating func addEmergency(type: Emergency){
-        self.emergencyType = type
+        self.emergencyType = type.rawValue
     }
     
     mutating func addLocation(lat: Double, long: Double){

@@ -35,7 +35,7 @@ class ProfileTableVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileCell
-        guard let emergyncyType = reports?[indexPath.row].emergencyType?.rawValue else {return cell}
+        guard let emergyncyType = reports?[indexPath.row].emergencyType else {return cell}
         guard let date = reports?[indexPath.row].date else {return cell}
         cell.label.text = "\(emergyncyType)-\(date)"
 

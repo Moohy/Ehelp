@@ -18,6 +18,9 @@
 		1041717423224B4C006EE103 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717323224B4C006EE103 /* Report.swift */; };
 		1041717623225028006EE103 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717523225028006EE103 /* Global.swift */; };
 		106699482330ACA5004EEED7 /* SubmissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106699472330ACA5004EEED7 /* SubmissionVC.swift */; };
+		1081B6752331C974000486AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6742331C974000486AB /* User.swift */; };
+		1081B6772331CEE1000486AB /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6762331CEE1000486AB /* SignupVC.swift */; };
+		1081B6792331D60D000486AB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6782331D60D000486AB /* LoginVC.swift */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +60,9 @@
 		1041717323224B4C006EE103 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		1041717523225028006EE103 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		106699472330ACA5004EEED7 /* SubmissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionVC.swift; sourceTree = "<group>"; };
+		1081B6742331C974000486AB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1081B6762331CEE1000486AB /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		1081B6782331D60D000486AB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +151,8 @@
 				10413B63232657E10006AE88 /* TableCellReportDetailsVC.swift */,
 				10C4238C232779B200CFD15A /* ProfileCell.swift */,
 				10C4238E232779F300CFD15A /* ProfileTableVC.swift */,
+				1081B6762331CEE1000486AB /* SignupVC.swift */,
+				1081B6782331D60D000486AB /* LoginVC.swift */,
 			);
 			path = "view model";
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 			children = (
 				1041717323224B4C006EE103 /* Report.swift */,
 				1041717523225028006EE103 /* Global.swift */,
+				1081B6742331C974000486AB /* User.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -298,11 +307,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1081B6792331D60D000486AB /* LoginVC.swift in Sources */,
 				1041717623225028006EE103 /* Global.swift in Sources */,
 				10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */,
 				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
 				10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */,
 				106699482330ACA5004EEED7 /* SubmissionVC.swift in Sources */,
+				1081B6752331C974000486AB /* User.swift in Sources */,
+				1081B6772331CEE1000486AB /* SignupVC.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				1041717423224B4C006EE103 /* Report.swift in Sources */,
 				10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */,

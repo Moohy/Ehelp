@@ -12,4 +12,13 @@ class Global{
     private init() { }
     static let shared = Global()
     var reports = [Report]()
+    var users   = [[String:AnyObject]]()
+    
+//    var users: [String: Any] {
+//        return ["email": email!,
+//                "password": password!,
+//                "name": name!,
+//                "id": id!,
+//                "phoneNum":phoneNum!]
+//    }
 }
