@@ -30,10 +30,20 @@ class SignupVC: UIViewController {
     }
     
     func isValidInformation() -> Bool {
+
         if((email.text!.isEmpty) || (password.text!.isEmpty) ||
             (name.text!.isEmpty) || (id.text!.isEmpty) ||
             (phoneNum.text!.isEmpty) ){
             let alertController:UIAlertController = UIAlertController(title: "Error", message: "Make sure you complete all fields", preferredStyle: UIAlertController.Style.alert)
+            
+            let alertAction:UIAlertAction = UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler:nil)
+            alertController.addAction(alertAction)
+            present(alertController, animated: true, completion: nil)
+            return false
+        }
+        // alert if email is invalid
+        if (isValidEmail(testStr: email.text!) == false) {
+            let alertController:UIAlertController = UIAlertController(title: "Error", message: "Email is Invalid", preferredStyle: UIAlertController.Style.alert)
             
             let alertAction:UIAlertAction = UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler:nil)
             alertController.addAction(alertAction)

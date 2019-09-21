@@ -9,7 +9,6 @@ class SubmissionVC: UIViewController {
     var report: Report!
     
     @IBOutlet weak var message: UITextView!
-    
     let locationManager = CLLocationManager()
     
     @IBOutlet var mapView: MKMapView!
@@ -32,7 +31,8 @@ class SubmissionVC: UIViewController {
         // add border to the description text view
         self.message.layer.borderColor = UIColor.lightGray.cgColor
         self.message.layer.borderWidth = 1
-        
+        self.message.accessibilityIdentifier = "descriptionTV"
+
         // keyboard observer
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
