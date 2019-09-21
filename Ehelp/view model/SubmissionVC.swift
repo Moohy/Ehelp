@@ -107,7 +107,7 @@ class SubmissionVC: UIViewController {
         
         // add date, message, location to the repor array
         
-        report.date = "23-2-2020"
+        report.addDate()
         
         // check if description length is less than 10 or greater than 160
         // if so, then alert user to meet the specified length

@@ -61,4 +61,11 @@ struct Report: Codable {
     mutating func addAttachment(attach: String){
         self.attachment = attach
     }
+    
+    mutating func addDate(){
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy:HH:mm"
+        self.date = formatter.string(from: date)
+    }
 }
