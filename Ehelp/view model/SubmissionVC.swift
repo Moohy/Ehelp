@@ -6,7 +6,7 @@ import UIKit.UIAlertController
 
 class SubmissionVC: UIViewController {
     
-    var report: Report!
+    var reportViewModel = ReportViewModel()
     
     @IBOutlet weak var message: UITextView!
     let locationManager = CLLocationManager()
@@ -59,33 +59,32 @@ class SubmissionVC: UIViewController {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-        
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-        
+
         mapView.mapType = MKMapType.standard
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: locValue, span: span)
-        mapView.setRegion(region, animated: true)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locValue
-        annotation.subtitle = "Current Location"
-        mapView.addAnnotation(annotation)
-        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+
+        currentLocation()
     }
     
     func addAnnotation(location: CLLocationCoordinate2D){
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        //        annotation.title = "Some Title"
-        //        annotation.subtitle = "Some Subtitle"
         self.mapView.addAnnotation(annotation)
         
-        report.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
     
+    func currentLocation() {
+        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: locValue, span: span)
+        mapView.setRegion(region, animated: true)
 
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = locValue
+        annotation.subtitle = "Current Location"
+        mapView.addAnnotation(annotation)
+        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+    }
     
 
     
@@ -106,8 +105,7 @@ class SubmissionVC: UIViewController {
     @IBAction func submitButton(_ sender: Any) {
         
         // add date, message, location to the repor array
-        
-        report.addDate()
+        reportViewModel.addDate()
         
         // check if description length is less than 10 or greater than 160
         // if so, then alert user to meet the specified length
@@ -124,9 +122,9 @@ class SubmissionVC: UIViewController {
             let detectedLang = languageDetection(for: message.text)
             
             // Add message after validation
-            report.addMessage(msg: message.text)
+            reportViewModel.addMessage(msg: message.text)
 
-            Global.shared.reports.append(report)
+            Global.shared.reports.append(reportViewModel)
         }
         
         
@@ -135,10 +133,6 @@ class SubmissionVC: UIViewController {
         
         let alertAction = UIAlertAction(title: "Back", style: .cancel, handler:
         { action in
-            //switch tab bar
-            //            let vc: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            //            vc.selectedIndex = 1
-            //            self.present(vc, animated: true, completion: nil)
             self.navigationController?.popToRootViewController(animated: true)
         } )
         

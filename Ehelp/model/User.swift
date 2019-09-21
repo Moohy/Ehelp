@@ -11,11 +11,11 @@ import Foundation
 //codable will help if planning to encode info
 //to json inorder to use them for an online service backend
 struct User: Codable {
-    var email:          String!
-    var password:       String!
-    var name:           String!
-    var id:             String!
-    var phoneNum:    String!
+    private var email:          String!
+    private var password:       String!
+    private var name:           String!
+    private var id:             String!
+    private var phoneNum:    String!
     
     var dict: [String: Any] {
         return ["email": email!,
@@ -23,5 +23,37 @@ struct User: Codable {
                 "name": name!,
                 "id": id!,
                 "phoneNum":phoneNum!]
+    }
+    
+    func getEmail() -> String {
+        return self.email
+    }
+    
+    func getPassword() -> String {
+        return self.password
+    }
+    
+    func getDictionary() -> [String:Any] {
+        return self.dict
+    }
+    
+    mutating func setEmail(email: String) {
+        self.email = email
+    }
+    
+    mutating func setPassword(password: String) {
+        self.password = password
+    }
+    
+    mutating func setName(name: String) {
+        self.name = name
+    }
+    
+    mutating func setID(id: String) {
+        self.id = id
+    }
+    
+    mutating func setPhoneNum(phoneNum: String) {
+        self.phoneNum = phoneNum
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class SignupVC: UIViewController {
     
+    private var userViewModel = UserViewModel()
+    
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -55,8 +57,12 @@ class SignupVC: UIViewController {
     
     @IBAction func signupButton(_ sender: Any) {
         if((isValidInformation())&&(isValidEmail(testStr: email.text ?? ""))){
-            let user = User(email: email.text!, password: password.text!, name: name.text!, id: id.text!, phoneNum: phoneNum.text!)
-            Global.shared.users.append(user.dict as [String : AnyObject])
+            userViewModel.setEmail(email: email.text!)
+            userViewModel.setPassword(password: password.text!)
+            userViewModel.setName(name: name.text!)
+            userViewModel.setID(id: id.text!)
+            userViewModel.setPhoneNum(phoneNum: phoneNum.text!)
+            Global.shared.users.append(userViewModel.getDictionary() as [String : AnyObject])
             dismiss(animated: true, completion: nil)
         }else{
             password.text = ""
