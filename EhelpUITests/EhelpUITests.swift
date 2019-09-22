@@ -8,17 +8,21 @@ class EhelpUITests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
-
+        // Pre-condition
+        // if the app has not been launched yet
+        // then  launch it then sign up and sign in
         if EhelpUITests.app == nil {
             EhelpUITests.app = XCUIApplication()
             EhelpUITests.app!.launch()
             signUp()
             signIn()
+        // if the app has already been launched, then sign in only
         }else{
             signIn()
         }
     }
 
+    // tearDown function runs after each test (Post-condition)
     override func tearDown() {
         // sign out after each test
         signOut()
@@ -94,14 +98,13 @@ class EhelpUITests: XCTestCase {
         // test if numbers of buttons = 2
         XCTAssertEqual(buttonCounts, 2)
         
-        
+        // sign in
         signIn()
     }
     
     func testMenu() {
 
         let app = XCUIApplication()
-        
         // get buttons
         let policeButon = app.buttons["Police"]
         let fireFighterButton = app.buttons["Fire Fighter"]
@@ -112,15 +115,52 @@ class EhelpUITests: XCTestCase {
         XCTAssertTrue(fireFighterButton.exists)
         //test if ambulanceButton exists
         XCTAssertTrue(ambulanceButton.exists)
-
+        
         // reference to tab bar
         let tabBarsQuery = app.tabBars
         // report button on tab bar
         let tabBarButton = tabBarsQuery.buttons.count
         XCTAssertEqual(tabBarButton, 2)
+
+    }
+    // test if the submission is invalid
+    func testInvalidSubmission() {
         
-        signOut()
-        signIn()
+        let emergencyType = "Police"
+        let decriptionText = "Invalid"
+        
+        // get reference to the app
+        let app = XCUIApplication()
+        
+        // reference to tab bar
+        let tabBarsQuery = app.tabBars
+        
+        // menu tab bar
+        let menuButton = tabBarsQuery.buttons["Menu"]
+        menuButton.tap()
+        sleep(1)
+        // click on emergency type that we specified above
+        app.buttons[emergencyType].tap()
+        // sleep for two seconds
+        sleep(1)
+        app.textViews["descriptionTV"].tap()
+        // text view field
+        let descriptionTextView = app.textViews["descriptionTV"]
+        // type description
+        descriptionTextView.typeText(decriptionText)
+        // submit button
+        let submitButton = app.buttons["Submit"]
+        // tap submit button
+        submitButton.tap()
+        // test if the error alert exsists after typing invalid descritpion
+        XCTAssertTrue(app.alerts["Error"].buttons["Message"].exists)
+        // click on success message
+        app.alerts["Error"].buttons["Message"].tap()
+        sleep(1)
+        //////////////
+        // go back to menu
+        app.navigationBars.buttons["Emergency Type"].tap()
+
     }
     
     func testEmptyValidReviwingReport() {
@@ -181,12 +221,8 @@ class EhelpUITests: XCTestCase {
         app.navigationBars["Ehelp.TableCellReportDetailsVC"].buttons["Reports"].tap()
         //
         
-        // menu tab bar
+        // click on menu tab bar
         tabBarsQuery.buttons["Menu"].tap()
-        
-        // then click on menu tab bar in order to either
-        // 1- file another report
-        // 2- sign out
         
     }
     
@@ -205,11 +241,11 @@ class EhelpUITests: XCTestCase {
         // menu tab bar
         let menuButton = tabBarsQuery.buttons["Menu"]
         menuButton.tap()
-        sleep(2)
+        sleep(1)
         // click on emergency type that we specified above
         app.buttons[emergencyType].tap()
         // sleep for two seconds
-        sleep(2)
+        sleep(1)
         app.textViews["descriptionTV"].tap()
         // text view field
         let descriptionTextView = app.textViews["descriptionTV"]
@@ -232,7 +268,7 @@ class EhelpUITests: XCTestCase {
         formatter.dateFormat = "dd-MM-yyyy:HH:mm"
         let ourDate = formatter.string(from: date)
         
-        let reportDetail = "\(description)-\(ourDate)"
+        let reportDetail = "\(emergencyType)-\(ourDate)"
         
         return reportDetail
         
