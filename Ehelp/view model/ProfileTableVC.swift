@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTableVC: UITableViewController {
     
-    var reports : [Report]? {
+    var reportViewModel : [ReportViewModel]? {
         return Global.shared.reports
     }
     
@@ -29,31 +29,32 @@ class ProfileTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reports?.count ?? 0
+        return reportViewModel?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileCell
-        guard let emergyncyType = reports?[indexPath.row].emergencyType else {return cell}
-        guard let date = reports?[indexPath.row].date else {return cell}
+
+        guard let emergyncyType = reportViewModel?[indexPath.row].getEmergency() else {return cell}
+        guard let date = reportViewModel?[indexPath.row].getDate() else {return cell}
         cell.label.text = "\(emergyncyType)-\(date)"
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Selected row will fall into here
+        // Selected row will fall into here
         let cell = tableView.cellForRow(at: indexPath)
         
         if cell != nil {
             let tableCellReportDetails = self.storyboard?.instantiateViewController(withIdentifier: "tableCellReportDetails") as! TableCellReportDetailsVC
             
-            //TODO: value needs to be passed to the next view here!
+            //value passes to the next view here!
             
-            tableCellReportDetails.message = reports![indexPath.row].message!
-            tableCellReportDetails.latitude = reports![indexPath.row].latitude!
-            tableCellReportDetails.logitude = reports![indexPath.row].longitude!
+            tableCellReportDetails.message = reportViewModel![indexPath.row].getMessage()
+            tableCellReportDetails.latitude = reportViewModel![indexPath.row].latitude()
+            tableCellReportDetails.longitude = reportViewModel![indexPath.row].longitude()
             
             self.navigationController?.pushViewController(tableCellReportDetails, animated: true)
             

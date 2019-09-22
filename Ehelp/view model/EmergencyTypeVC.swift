@@ -2,8 +2,8 @@ import UIKit
 
 class EmergencyTypeVC: UIViewController {
     
-    var report = Report()
-    var emptyString:String = ""
+    private var reportViewModel = ReportViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -14,24 +14,23 @@ class EmergencyTypeVC: UIViewController {
     }
     
     @IBAction func police(_ sender: Any) {
-        report.addEmergency(type: Emergency.police)
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
-        nextVC.report = report
-        self.navigationController?.pushViewController(nextVC, animated: true)
-//        self.present(nextViewController, animated:true, completion:nil)
+        reportViewModel.addEmergency(type: Emergency.police)
+        nextView()
     }
     
     @IBAction func fireFighter(_ sender: Any) {
-        report.addEmergency(type: Emergency.fireFighter)
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
-        nextVC.report = report
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        reportViewModel.addEmergency(type: Emergency.fireFighter)
+        nextView()
     }
     
     @IBAction func ambulance(_ sender: Any) {
-        report.addEmergency(type: Emergency.ambulance)
+        reportViewModel.addEmergency(type: Emergency.ambulance)
+        nextView()
+    }
+    
+    func nextView(){
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
-        nextVC.report = report
+        nextVC.reportViewModel = reportViewModel
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

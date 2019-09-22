@@ -16,7 +16,7 @@ class TableCellReportDetailsVC: UIViewController {
     @IBOutlet var textView: UITextView!
     var message: String!
     var latitude: Double!
-    var logitude: Double!
+    var longitude: Double!
     
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class TableCellReportDetailsVC: UIViewController {
         textView.isEditable = false
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        let coor = CLLocationCoordinate2DMake(latitude, logitude)
+        let coor = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: coor, span: span)
         self.mapView.setRegion(region, animated: true)
@@ -38,22 +38,7 @@ class TableCellReportDetailsVC: UIViewController {
         annotation.coordinate = coor
         self.mapView.addAnnotation(annotation)
 
-        
-        // Do any additional setup after loading the view.
     }
-   
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 

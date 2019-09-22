@@ -10,7 +10,7 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    var users : [[String:AnyObject]]! {
+    var userViewModel : [[String:AnyObject]]! {
         return Global.shared.users
     }
     
@@ -38,8 +38,8 @@ class LoginVC: UIViewController {
     }
 
     func validateUser() -> Bool {
-        if let index = users!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
-            if(users![index]["password"] as! String == password.text! ){
+        if let index = userViewModel!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
+            if(userViewModel![index]["password"] as! String == password.text! ){
                 return true
             }
         }

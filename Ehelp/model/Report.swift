@@ -7,62 +7,49 @@
 //
 
 import Foundation
-
-
-struct CustomDate {
-    // Marked as optional as invalid construction data will produce a nil value
-    private (set) var date:Date?
-    
-    init(day:Int, month:Int, year:Int, hour:Int = 0, minute:Int = 0,
-         timeZone:TimeZone = .current) {
-        
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        dateComponents.day = day
-        dateComponents.timeZone = timeZone
-        dateComponents.minute = minute
-        let userCalnedar = Calendar.current
-        
-        date = userCalnedar.date(from: dateComponents)
-    }
-}
-
+import MapKit
 
 enum Emergency: String {
     case    police = "Police",
             fireFighter = "Fire Fighter",
             ambulance = "Ambulance"
-    
 }
 
 struct Report: Codable {
-    var emergencyType:  String!
+    var emergencyType:  String! 
     var latitude:       Double!
     var longitude:      Double!
     var message:        String!
-    var attachment:     String!
-    public var date:    String! // TODO: needs to be a class of data
+    var date:    String!
 
-    
-    mutating func addEmergency(type: Emergency){
-        self.emergencyType = type.rawValue
-    }
-    
-    mutating func addLocation(lat: Double, long: Double){
-        self.latitude = lat
-        self.longitude = long
-    }
-    
-    mutating func addMessage(msg: String){
-        self.message = msg
-    }
-    
-    mutating func addAttachment(attach: String){
-        self.attachment = attach
-    }
-    
-    mutating func addDate(){
+//    
+//    mutating func getEmergency() -> String{
+//        return self.emergencyType
+//    }
+//    
+//    
+//    mutating func getMessage() -> String{
+//        return self.message
+//    }
+//    
+//    mutating func getDate() -> String {
+//        return self.date
+//    }
+//    
+//    mutating func setEmergency(type: Emergency){
+//        self.emergencyType = type.rawValue
+//    }
+//    
+//    mutating func setLocation(lat: Double, long: Double){
+//        self.latitude = lat
+//        self.longitude = long
+//    }
+//    
+//    mutating func setMessage(msg: String){
+//        self.message = msg
+//    }
+//    
+    mutating func setDate(date: String){
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy:HH:mm"
