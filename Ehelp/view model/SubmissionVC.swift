@@ -96,7 +96,7 @@ class SubmissionVC: UIViewController {
 
         //current coordinates grapped from location manager on the device
         let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-        
+  
         //zoom of the map
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)

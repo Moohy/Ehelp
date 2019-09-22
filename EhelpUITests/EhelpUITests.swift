@@ -194,7 +194,7 @@ class EhelpUITests: XCTestCase {
         
         // submit report before reviwing reports
         // get report detail after submitting a report
-        let reportDetail = submittingReport()
+        let emergencyType = submittingReport()
         
         // get reference to the app
         let app = XCUIApplication()
@@ -214,7 +214,7 @@ class EhelpUITests: XCTestCase {
         XCTAssertEqual(cellCount, 1)
         
         // tab on recent created report
-        app.tables.staticTexts[reportDetail].tap()
+        app.tables.staticTexts[emergencyType].tap()
         
         
         // go back to the report menu
@@ -262,15 +262,9 @@ class EhelpUITests: XCTestCase {
         // click on success message
         app.alerts["Message"].buttons["Back"].tap()
         sleep(1)
+
         
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy:HH:mm"
-        let ourDate = formatter.string(from: date)
-        
-        let reportDetail = "\(emergencyType)-\(ourDate)"
-        
-        return reportDetail
+        return emergencyType
         
     }
     

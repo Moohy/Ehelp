@@ -12,13 +12,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "0"
+            timestampString = "590830709.5267071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3"
             endingLineNumber = "3"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "EhelpUITests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -29,13 +29,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "0"
+            timestampString = "590830709.5281121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4"
             endingLineNumber = "4"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "EhelpUITests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,13 +46,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "0"
+            timestampString = "590830709.529081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "submittingReport()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
