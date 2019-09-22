@@ -120,22 +120,45 @@ class EhelpUITests: XCTestCase {
         XCTAssertTrue(fireFighterButton.exists)
         //test if ambulanceButton exists
         XCTAssertTrue(ambulanceButton.exists)
-        
-        // get buttons count
-        let buttonCount = app.buttons.count
-        XCTAssertEqual(buttonCount, 3)
-        
+
         // reference to tab bar
         let tabBarsQuery = app.tabBars
         // report button on tab bar
         let tabBarButton = tabBarsQuery.buttons.count
         XCTAssertEqual(tabBarButton, 2)
         
-        
+        signOut()
         signIn()
     }
     
-    func testValidReviwingReport() {
+    func testEmptyValidReviwingReport() {
+                
+        // get reference to the app
+        let app = XCUIApplication()
+        
+        // reference to tab bar
+        let tabBarsQuery = app.tabBars
+        
+        // report button on tab bar
+        let reportsButton = tabBarsQuery.buttons["Reports"]
+        // tap the report button
+        reportsButton.tap()
+        sleep(1)
+        
+        // test if there exist only one report
+        let tablesQuery = app.tables
+        let cellCount = tablesQuery.cells.count
+        XCTAssertEqual(cellCount, 0)
+        // menu tab bar
+        tabBarsQuery.buttons["Menu"].tap()
+        
+        // then click on menu tab bar in order to either
+        // 1- file another report
+        // 2- sign out
+        
+    }
+    
+    func testNoneEmptyValidReviwingReport() {
         
         // submit report before reviwing reports
         // get report detail after submitting a report
