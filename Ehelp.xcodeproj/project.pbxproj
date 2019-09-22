@@ -119,9 +119,9 @@
 		10417141231D0692006EE103 /* Ehelp */ = {
 			isa = PBXGroup;
 			children = (
-				10417172231D06B5006EE103 /* view */,
-				10417171231D06AB006EE103 /* model */,
-				10417170231D06A0006EE103 /* view model */,
+				10417172231D06B5006EE103 /* View */,
+				10417171231D06AB006EE103 /* Model */,
+				10417170231D06A0006EE103 /* ViewModel */,
 				10417142231D0692006EE103 /* AppDelegate.swift */,
 				10417149231D0695006EE103 /* Assets.xcassets */,
 				1041714E231D0695006EE103 /* Info.plist */,
@@ -147,7 +147,7 @@
 			path = EhelpUITests;
 			sourceTree = "<group>";
 		};
-		10417170231D06A0006EE103 /* view model */ = {
+		10417170231D06A0006EE103 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				10417144231D0692006EE103 /* EmergencyTypeVC.swift */,
@@ -160,26 +160,26 @@
 				10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */,
 				10EE8D282336860100BB44F2 /* UserViewModel.swift */,
 			);
-			path = "view model";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		10417171231D06AB006EE103 /* model */ = {
+		10417171231D06AB006EE103 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1041717323224B4C006EE103 /* Report.swift */,
 				1041717523225028006EE103 /* Global.swift */,
 				1081B6742331C974000486AB /* User.swift */,
 			);
-			path = model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		10417172231D06B5006EE103 /* view */ = {
+		10417172231D06B5006EE103 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				10417146231D0692006EE103 /* Main.storyboard */,
 				1041714B231D0695006EE103 /* LaunchScreen.storyboard */,
 			);
-			path = view;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

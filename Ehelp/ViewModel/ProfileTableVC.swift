@@ -6,16 +6,17 @@ class ProfileTableVC: UITableViewController {
         return Global.shared.reports
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Reports"
         
         // reloads each time the view will appear
         self.tableView.reloadData()
+    }
+    
+    @IBAction func signoutButton(_ sender: Any) {
+        // dismiss
+        dismiss(animated: true, completion: nil)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

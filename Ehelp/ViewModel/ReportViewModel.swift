@@ -20,10 +20,7 @@ struct ReportViewModel {
     }
     
     mutating func addDate(){
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy:HH:mm"
-        report.setDate(date: formatter.string(from: date))
+        report.setDate()
     }
     
     func getEmergency() -> String{

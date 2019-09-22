@@ -6,11 +6,33 @@ class EmergencyTypeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sampleData()
+    }
+    
+    func sampleData() {
+        reportViewModel.addDate()
+        reportViewModel.addMessage(msg: "heart attack!")
+        reportViewModel.addEmergency(type: Emergency.ambulance)
+        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
+        Global.shared.reports.append(reportViewModel)
+        
+        reportViewModel.addDate()
+        reportViewModel.addMessage(msg: "car accedent and a huge fire!")
+        reportViewModel.addEmergency(type: Emergency.fireFighter)
+        reportViewModel.addLocation(lat: -33.8688, long: 151.2093)
+        Global.shared.reports.append(reportViewModel)
+        
+        reportViewModel.addDate()
+        reportViewModel.addMessage(msg: "a theif stole woolworths!")
+        reportViewModel.addEmergency(type: Emergency.police)
+        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
+        Global.shared.reports.append(reportViewModel)
     }
 
     
     @IBAction func signoutButton(_ sender: Any) {
-        // dismiss segue
+        // dismiss
         dismiss(animated: true, completion: nil)
     }
     

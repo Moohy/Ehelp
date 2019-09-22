@@ -2,16 +2,34 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    var userViewModel : [[String:AnyObject]]! {
+    private var userViewModel = UserViewModel()
+    
+    var userGlobal : [[String:AnyObject]]! {
         return Global.shared.users
     }
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    override func viewDidLoad() {
+        email.text = ""
+        password.text = ""
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         email.text = ""
         password.text = ""
+        
+        setupUser()
+    }
+    
+    func setupUser() {
+        userViewModel.setEmail(email: "a@a.a")
+        userViewModel.setPassword(password: "a")
+        userViewModel.setName(name: "admin")
+        userViewModel.setID(id: "1")
+        userViewModel.setPhoneNum(phoneNum: "+61 444 4444")
+        Global.shared.users.append(userViewModel.getDictionary() as [String : AnyObject])
     }
     
     @IBAction func loginButton(_ sender: Any) {
@@ -29,8 +47,8 @@ class LoginVC: UIViewController {
      *
      */
     func validateUser() -> Bool {
-        if let index = userViewModel!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
-            if(userViewModel![index]["password"] as! String == password.text! ){
+        if let index = userGlobal!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
+            if(userGlobal![index]["password"] as! String == password.text! ){
                 return true
             }
         }

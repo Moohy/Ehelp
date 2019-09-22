@@ -14,7 +14,7 @@ struct Report: Codable {
     var message:        String!
     var date:    String!
 
-    mutating func setDate(date: String){
+    mutating func setDate(){
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
