@@ -93,17 +93,11 @@ class SubmissionVC: UIViewController {
      *
      */
     func currentLocation() {
-<<<<<<< HEAD
-//        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-        
-        var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
-        locValue.latitude = 21.4858
-        locValue.longitude = 39.1925
-=======
+
         //current coordinates grapped from location manager on the device
         let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        
         //zoom of the map
->>>>>>> 2e742aa13469fe04cdc9d55bfa887bb03353b56d
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
         mapView.setRegion(region, animated: true)
@@ -153,10 +147,6 @@ class SubmissionVC: UIViewController {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         } else {
-<<<<<<< HEAD
-            
-=======
->>>>>>> 2e742aa13469fe04cdc9d55bfa887bb03353b56d
             // Add message after validation
             reportViewModel.addMessage(msg: message.text)
 
