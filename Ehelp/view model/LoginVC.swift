@@ -27,7 +27,6 @@ class LoginVC: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         if(!validateUser()){
-            print("here")
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
             self.present(nextVC, animated: true, completion: nil)
         }else {
