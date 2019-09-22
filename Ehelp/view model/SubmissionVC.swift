@@ -13,6 +13,7 @@ class SubmissionVC: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
     
+    //long press will take affect on the map
     @IBAction func gesRec(_ sender: Any) {
         
         if (sender as AnyObject).state == .began {
