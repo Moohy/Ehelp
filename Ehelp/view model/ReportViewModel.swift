@@ -1,11 +1,3 @@
-//
-//  ReportViewModel.swift
-//  Ehelp
-//
-//  Created by Mohammed on 22/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import Foundation
 import MapKit
 

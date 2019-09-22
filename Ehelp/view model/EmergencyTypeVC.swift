@@ -37,6 +37,12 @@ class EmergencyTypeVC: UIViewController {
         nextView()
     }
     
+    /*
+     *
+     * sets up the reportViewModel and
+     * present next view by pushing it to the navigation controller
+     *
+     */
     func nextView(){
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         

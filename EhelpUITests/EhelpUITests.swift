@@ -1,11 +1,3 @@
-//
-//  EhelpUITests.swift
-//  EhelpUITests
-//
-//  Created by Mohammed on 2/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import XCTest
 
 class EhelpUITests: XCTestCase {

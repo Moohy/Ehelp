@@ -1,11 +1,3 @@
-//
-//  SignupVC.swift
-//  Ehelp
-//
-//  Created by Mohammed on 18/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import UIKit
 
 class SignupVC: UIViewController {
@@ -19,20 +11,24 @@ class SignupVC: UIViewController {
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var phoneNum: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+    /*
+     *
+     * check validity of the email and return true/false based on that
+     *
+     */
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
         let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
     
+    /*
+     *
+     * checks the validity of all information that has been entered to
+     * the text fields and return true/false based on the given info
+     *
+     */
     func isValidInformation() -> Bool {
-
         if((email.text!.isEmpty) || (password.text!.isEmpty) ||
             (name.text!.isEmpty) || (id.text!.isEmpty) ||
             (phoneNum.text!.isEmpty) ){
@@ -56,7 +52,9 @@ class SignupVC: UIViewController {
     }
     
     @IBAction func signupButton(_ sender: Any) {
+        // validity check
         if((isValidInformation())&&(isValidEmail(testStr: email.text ?? ""))){
+            // add the new user to the userViewModel
             userViewModel.setEmail(email: email.text!)
             userViewModel.setPassword(password: password.text!)
             userViewModel.setName(name: name.text!)

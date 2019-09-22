@@ -1,11 +1,3 @@
-//
-//  User.swift
-//  Ehelp
-//
-//  Created by Mohammed on 18/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import Foundation
 
 //codable will help if planning to encode info
