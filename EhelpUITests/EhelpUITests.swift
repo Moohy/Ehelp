@@ -41,45 +41,48 @@ class EhelpUITests: XCTestCase {
         // sign out first
         signOut()
         let app = XCUIApplication()
-        
-        // click sign up button
-        app.buttons["signup"].tap()
-        // sleep for 2 seconds
-        sleep(2)
-        // email field
-        let emailTextField = app.textFields["Email"]
-        //test if email field exists
-        XCTAssertTrue(emailTextField.exists)
-        // password field
-        let passwordTextField = app.textFields["Password"]
-        //test if password field exists
-        XCTAssertTrue(passwordTextField.exists)
-        // full name field
-        let fullNameTextField = app.textFields["Full Name"]
-        //test if full name field exists
-        XCTAssertTrue(fullNameTextField.exists)
-        // ID field
-        let IDTextField = app.textFields["ID"]
-        //test if ID field exists
-        XCTAssertTrue(IDTextField.exists)
-        // Phone number field
-        let phoneNumberTextField = app.textFields["Phone No."]
-        //test if Phone number field exists
-        XCTAssertTrue(phoneNumberTextField.exists)
-        
-        // get count for text fields
-        let textFieldsCount = app.textFields.count
-        // test if numbers of buttons = 5
-        XCTAssertEqual(textFieldsCount, 5)
-        // get count for number of buttons
-        let buttonCount = app.buttons.count
-        // test if numbers of buttons = 2
-        XCTAssertEqual(buttonCount, 2)
-        // wait for 1 second
-        sleep(1)
-        app.buttons["Cancel"].tap()
-        // always sign in since we always sign out after each method runs
-        signIn()
+        // check if you are at the log in page
+        if (app.buttons["signup"].exists) {
+            // click sign up button
+            app.buttons["signup"].tap()
+            // sleep for 2 seconds
+            sleep(2)
+            // email field
+            let emailTextField = app.textFields["Email"]
+            //test if email field exists
+            XCTAssertTrue(emailTextField.exists)
+            // password field
+            let passwordTextField = app.textFields["Password"]
+            //test if password field exists
+            XCTAssertTrue(passwordTextField.exists)
+            // full name field
+            let fullNameTextField = app.textFields["Full Name"]
+            //test if full name field exists
+            XCTAssertTrue(fullNameTextField.exists)
+            // ID field
+            let IDTextField = app.textFields["ID"]
+            //test if ID field exists
+            XCTAssertTrue(IDTextField.exists)
+            // Phone number field
+            let phoneNumberTextField = app.textFields["Phone No."]
+            //test if Phone number field exists
+            XCTAssertTrue(phoneNumberTextField.exists)
+            
+            // get count for text fields
+            let textFieldsCount = app.textFields.count
+            // test if numbers of buttons = 5
+            XCTAssertEqual(textFieldsCount, 5)
+            // get count for number of buttons
+            let buttonCount = app.buttons.count
+            // test if numbers of buttons = 2
+            XCTAssertEqual(buttonCount, 2)
+            // wait for 1 second
+            sleep(1)
+            app.buttons["Cancel"].tap()
+            // always sign in since we always sign out after each method runs
+            signIn()
+        }
+
     }
     
     // test function
