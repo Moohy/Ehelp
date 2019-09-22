@@ -27,7 +27,7 @@ class SubmissionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // add border to the description text view
         self.message.layer.borderColor = UIColor.lightGray.cgColor
         self.message.layer.borderWidth = 1
@@ -74,7 +74,11 @@ class SubmissionVC: UIViewController {
     }
     
     func currentLocation() {
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+//        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        
+        var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
+        locValue.latitude = 21.4858
+        locValue.longitude = 39.1925
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
         mapView.setRegion(region, animated: true)
@@ -117,9 +121,6 @@ class SubmissionVC: UIViewController {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         } else {
-            
-            // language detection
-            let detectedLang = languageDetection(for: message.text)
             
             // Add message after validation
             reportViewModel.addMessage(msg: message.text)
