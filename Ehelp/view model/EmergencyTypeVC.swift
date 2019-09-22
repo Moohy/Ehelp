@@ -3,7 +3,7 @@ import UIKit
 class EmergencyTypeVC: UIViewController {
     
     var report = Report()
-
+    var emptyString:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
     }

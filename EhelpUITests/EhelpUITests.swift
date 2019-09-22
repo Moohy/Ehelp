@@ -31,7 +31,80 @@ class EhelpUITests: XCTestCase {
         // sign out after each test
         signOut()
     }
+    
+    // test function
+    func testSignupButtonsAndFields() {
+        
+        signOut()
+        let app = XCUIApplication()
 
+        // click sign up button
+        app.buttons["signup"].tap()
+        // sleep for 2 seconds
+        sleep(2)
+        // email field
+        let emailTextField = app.textFields["Email"]
+        //test if email field exists
+        XCTAssertTrue(emailTextField.exists)
+        // password field
+        let passwordTextField = app.textFields["Password"]
+        //test if password field exists
+        XCTAssertTrue(passwordTextField.exists)
+        // full name field
+        let fullNameTextField = app.textFields["Full Name"]
+        //test if full name field exists
+        XCTAssertTrue(fullNameTextField.exists)
+        // ID field
+        let IDTextField = app.textFields["ID"]
+        //test if ID field exists
+        XCTAssertTrue(IDTextField.exists)
+        // Phone number field
+        let phoneNumberTextField = app.textFields["Phone No."]
+        //test if Phone number field exists
+        XCTAssertTrue(phoneNumberTextField.exists)
+        
+        // get count for text fields
+        let textFieldsCount = app.textFields.count
+        // test if numbers of buttons = 5
+        XCTAssertEqual(textFieldsCount, 5)
+        // get count for number of buttons
+        let buttonCount = app.buttons.count
+        // test if numbers of buttons = 2
+        XCTAssertEqual(buttonCount, 2)
+        // wait for 1 second
+        sleep(1)
+        app.buttons["Cancel"].tap()
+        // always sign in since we always sign out after each method runs
+        signIn()
+    }
+    
+    // test function
+    func testLoginButtonsAndFields() {
+        
+        signOut()
+        let app = XCUIApplication()
+        
+        // email field
+        let emailTextField = app.textFields["Email"]
+        //test if email field exists
+        XCTAssertTrue(emailTextField.exists)
+        // password field
+        let passwordTextField = app.textFields["Password"]
+        //test if password field exists
+        XCTAssertTrue(passwordTextField.exists)
+        
+        // get count for text fields
+        let textFieldsCount = app.textFields.count
+        // test if numbers of buttons = 2
+        XCTAssertEqual(textFieldsCount, 2)
+        // get count for number of buttons
+        let buttonCounts = app.buttons.count
+        // test if numbers of buttons = 2
+        XCTAssertEqual(buttonCounts, 2)
+        
+        
+        signIn()
+    }
     
     // this function will triger after sign in function
     func submittingReport() {
@@ -57,10 +130,8 @@ class EhelpUITests: XCTestCase {
         // text view field
         let descriptionTextView = app.textViews["descriptionTV"]
         
-        
         // type description
         descriptionTextView.typeText(decriptionText)
-        
         
         // missing chooing a cordinate on the map
         
@@ -117,6 +188,7 @@ class EhelpUITests: XCTestCase {
     }
     
     func signIn(){
+        
         let validEmail = "m.4848.m@hotmail.com"
         let validPassword = "123456"
         
@@ -125,15 +197,13 @@ class EhelpUITests: XCTestCase {
         
         // email field
         let emailTextField = app.textFields["Email"]
-        //check if email field exists
-        XCTAssertTrue(emailTextField.exists)
+        // tap email field
         emailTextField.tap()
         // type valid email
         emailTextField.typeText(validEmail)
         // password field
         let passwordTextField = app.textFields["Password"]
-        //check if password field exists
-        XCTAssertTrue(passwordTextField.exists)
+        // tap password field
         passwordTextField.tap()
         // type valid password
         passwordTextField.typeText(validPassword)
@@ -143,6 +213,7 @@ class EhelpUITests: XCTestCase {
     }
     
     func signUp(){
+        
         let validEmail = "m.4848.m@hotmail.com"
         let validPassword = "123456"
         let validFullName = "Mohammed Alotaibi"
@@ -157,36 +228,26 @@ class EhelpUITests: XCTestCase {
         
         // email field
         let emailTextField = app.textFields["Email"]
-        //check if email field exists
-        XCTAssertTrue(emailTextField.exists)
         emailTextField.tap()
         // type valid email
         emailTextField.typeText(validEmail)
         // password field
         let passwordTextField = app.textFields["Password"]
-        //check if password field exists
-        XCTAssertTrue(passwordTextField.exists)
         passwordTextField.tap()
         // type valid password
         passwordTextField.typeText(validPassword)
         // full name field
         let fullNameTextField = app.textFields["Full Name"]
-        //check if full name field exists
-        XCTAssertTrue(fullNameTextField.exists)
         fullNameTextField.tap()
         // type valid full name
         fullNameTextField.typeText(validFullName)
         // ID field
         let IDTextField = app.textFields["ID"]
-        //check if ID field exists
-        XCTAssertTrue(IDTextField.exists)
         IDTextField.tap()
         // type valid ID
         IDTextField.typeText(validID)
         // Phone number field
         let phoneNumberTextField = app.textFields["Phone No."]
-        //check if Phone number field exists
-        XCTAssertTrue(phoneNumberTextField.exists)
         phoneNumberTextField.tap()
         // type valid Phone number
         phoneNumberTextField.typeText(validPhoneNumber)
