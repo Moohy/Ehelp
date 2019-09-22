@@ -106,8 +106,77 @@ class EhelpUITests: XCTestCase {
         signIn()
     }
     
+    func testMenu() {
+
+        let app = XCUIApplication()
+        
+        // get buttons
+        let policeButon = app.buttons["Police"]
+        let fireFighterButton = app.buttons["Fire Fighter"]
+        let ambulanceButton = app.buttons["Ambulance"]
+        //test if policeButon exists
+        XCTAssertTrue(policeButon.exists)
+        //test if fireFighterButton exists
+        XCTAssertTrue(fireFighterButton.exists)
+        //test if ambulanceButton exists
+        XCTAssertTrue(ambulanceButton.exists)
+        
+        // get buttons count
+        let buttonCount = app.buttons.count
+        XCTAssertEqual(buttonCount, 3)
+        
+        // reference to tab bar
+        let tabBarsQuery = app.tabBars
+        // report button on tab bar
+        let tabBarButton = tabBarsQuery.buttons.count
+        XCTAssertEqual(tabBarButton, 2)
+        
+        
+        signIn()
+    }
+    
+    func testValidReviwingReport() {
+        
+        // submit report before reviwing reports
+        // get report detail after submitting a report
+        let reportDetail = submittingReport()
+        
+        // get reference to the app
+        let app = XCUIApplication()
+        
+        // reference to tab bar
+        let tabBarsQuery = app.tabBars
+        
+        // report button on tab bar
+        let reportsButton = tabBarsQuery.buttons["Reports"]
+        // tap the report button
+        reportsButton.tap()
+        sleep(1)
+
+        // test if there exist only one report
+        let tablesQuery = app.tables
+        let cellCount = tablesQuery.cells.count
+        XCTAssertEqual(cellCount, 1)
+        
+        // tab on recent created report
+        app.tables.staticTexts[reportDetail].tap()
+        
+        
+        // go back to the report menu
+        app.navigationBars["Ehelp.TableCellReportDetailsVC"].buttons["Reports"].tap()
+        //
+        
+        // menu tab bar
+        tabBarsQuery.buttons["Menu"].tap()
+        
+        // then click on menu tab bar in order to either
+        // 1- file another report
+        // 2- sign out
+        
+    }
+    
     // this function will triger after sign in function
-    func submittingReport() {
+    func submittingReport() -> String {
         
         let emergencyType = "Fire Fighter"
         let decriptionText = "this is my first report"
@@ -143,38 +212,14 @@ class EhelpUITests: XCTestCase {
         app.alerts["Message"].buttons["Back"].tap()
         sleep(1)
         
-    }
-    
-    func testValidReviwingReport() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy:HH:mm"
+        let ourDate = formatter.string(from: date)
         
-        // submit report before reviwing reports
-        submittingReport()
-
-        // get reference to the app
-        let app = XCUIApplication()
+        let reportDetail = "\(description)-\(ourDate)"
         
-        // reference to tab bar
-        let tabBarsQuery = app.tabBars
-        
-        // report button on tab bar
-        let reportsButton = tabBarsQuery.buttons["Reports"]
-        // tap the report button
-        reportsButton.tap()
-        sleep(1)
-        // tab on recent created report
-        app.tables.staticTexts["Fire Fighter-23-2-2020"].tap()
-        // this need to be modified as we're not dealing with static value // need to get the value from the report class
-        
-        // go back to the report menu
-        app.navigationBars["Ehelp.TableCellReportDetailsVC"].buttons["Reports"].tap()
-//
-        
-        // menu tab bar
-        tabBarsQuery.buttons["Menu"].tap()
-        
-        // then click on menu tab bar in order to either
-        // 1- file another report
-        // 2- sign out
+        return reportDetail
         
     }
     
