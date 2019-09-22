@@ -38,51 +38,48 @@ class EhelpUITests: XCTestCase {
     
     // test function
     func testSignupButtonsAndFields() {
-        // sign out first
+        
         signOut()
         let app = XCUIApplication()
-        // check if you are at the log in page
-        if (app.buttons["signup"].exists) {
-            // click sign up button
-            app.buttons["signup"].tap()
-            // sleep for 2 seconds
-            sleep(2)
-            // email field
-            let emailTextField = app.textFields["Email"]
-            //test if email field exists
-            XCTAssertTrue(emailTextField.exists)
-            // password field
-            let passwordTextField = app.textFields["Password"]
-            //test if password field exists
-            XCTAssertTrue(passwordTextField.exists)
-            // full name field
-            let fullNameTextField = app.textFields["Full Name"]
-            //test if full name field exists
-            XCTAssertTrue(fullNameTextField.exists)
-            // ID field
-            let IDTextField = app.textFields["ID"]
-            //test if ID field exists
-            XCTAssertTrue(IDTextField.exists)
-            // Phone number field
-            let phoneNumberTextField = app.textFields["Phone No."]
-            //test if Phone number field exists
-            XCTAssertTrue(phoneNumberTextField.exists)
-            
-            // get count for text fields
-            let textFieldsCount = app.textFields.count
-            // test if numbers of buttons = 5
-            XCTAssertEqual(textFieldsCount, 5)
-            // get count for number of buttons
-            let buttonCount = app.buttons.count
-            // test if numbers of buttons = 2
-            XCTAssertEqual(buttonCount, 2)
-            // wait for 1 second
-            sleep(1)
-            app.buttons["Cancel"].tap()
-            // always sign in since we always sign out after each method runs
-            signIn()
-        }
 
+        // click sign up button
+        app.buttons["signup"].tap()
+        // sleep for 2 seconds
+        sleep(2)
+        // email field
+        let emailTextField = app.textFields["Email"]
+        //test if email field exists
+        XCTAssertTrue(emailTextField.exists)
+        // password field
+        let passwordTextField = app.textFields["Password"]
+        //test if password field exists
+        XCTAssertTrue(passwordTextField.exists)
+        // full name field
+        let fullNameTextField = app.textFields["Full Name"]
+        //test if full name field exists
+        XCTAssertTrue(fullNameTextField.exists)
+        // ID field
+        let IDTextField = app.textFields["ID"]
+        //test if ID field exists
+        XCTAssertTrue(IDTextField.exists)
+        // Phone number field
+        let phoneNumberTextField = app.textFields["Phone No."]
+        //test if Phone number field exists
+        XCTAssertTrue(phoneNumberTextField.exists)
+        
+        // get count for text fields
+        let textFieldsCount = app.textFields.count
+        // test if numbers of buttons = 5
+        XCTAssertEqual(textFieldsCount, 5)
+        // get count for number of buttons
+        let buttonCount = app.buttons.count
+        // test if numbers of buttons = 2
+        XCTAssertEqual(buttonCount, 2)
+        // wait for 1 second
+        sleep(1)
+        app.buttons["Cancel"].tap()
+        // always sign in since we always sign out after each method runs
+        signIn()
     }
     
     // test function
@@ -116,34 +113,22 @@ class EhelpUITests: XCTestCase {
     func testMenu() {
 
         let app = XCUIApplication()
+        // get buttons
+        let policeButon = app.buttons["Police"]
+        let fireFighterButton = app.buttons["Fire Fighter"]
+        let ambulanceButton = app.buttons["Ambulance"]
+        //test if policeButon exists
+        XCTAssertTrue(policeButon.exists)
+        //test if fireFighterButton exists
+        XCTAssertTrue(fireFighterButton.exists)
+        //test if ambulanceButton exists
+        XCTAssertTrue(ambulanceButton.exists)
         
-        if (app.buttons["Police"].exists) {
-            
-            // get buttons
-            let policeButon = app.buttons["Police"]
-            let fireFighterButton = app.buttons["Fire Fighter"]
-            let ambulanceButton = app.buttons["Ambulance"]
-            //test if policeButon exists
-            XCTAssertTrue(policeButon.exists)
-            //test if fireFighterButton exists
-            XCTAssertTrue(fireFighterButton.exists)
-            //test if ambulanceButton exists
-            XCTAssertTrue(ambulanceButton.exists)
-            
-            // reference to tab bar
-            let tabBarsQuery = app.tabBars
-            // report button on tab bar
-            let tabBarButton = tabBarsQuery.buttons.count
-            XCTAssertEqual(tabBarButton, 2)
-            signOut()
-            signIn()
-        
-        } else {
-            signIn()
-        }
-        
-
-        
+        // reference to tab bar
+        let tabBarsQuery = app.tabBars
+        // report button on tab bar
+        let tabBarButton = tabBarsQuery.buttons.count
+        XCTAssertEqual(tabBarButton, 2)
 
     }
     // test if the submission is invalid
@@ -244,12 +229,8 @@ class EhelpUITests: XCTestCase {
         app.navigationBars["Ehelp.TableCellReportDetailsVC"].buttons["Reports"].tap()
         //
         
-        // menu tab bar
+        // click on menu tab bar
         tabBarsQuery.buttons["Menu"].tap()
-        
-        // then click on menu tab bar in order to either
-        // 1- file another report
-        // 2- sign out
         
     }
     
