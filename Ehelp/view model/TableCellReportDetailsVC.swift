@@ -1,11 +1,3 @@
-//
-//  TableCellReportDetailsVC.swift
-//  Ehelp
-//
-//  Created by Mohammed Alosaimi on 2019-09-09.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import UIKit
 import MapKit
 class TableCellReportDetailsVC: UIViewController {
@@ -22,14 +14,33 @@ class TableCellReportDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTextView()
+        
+        presentLocation()
+
+    }
+    
+    /*
+     *
+     * text view object customization and configration
+     *
+     */
+    func setupTextView() {
         // add border to the description text view
         self.textView.layer.borderColor = UIColor.lightGray.cgColor
         self.textView.layer.borderWidth = 1
         
         textView.text = message
         textView.isEditable = false
-        
-        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+    }
+    
+    /*
+     *
+     * setup the map to the given coordinate for the report
+     *
+     */
+    func presentLocation(){
+        self.mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         let coor = CLLocationCoordinate2DMake(latitude, longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: coor, span: span)

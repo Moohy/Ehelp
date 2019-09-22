@@ -13,6 +13,12 @@ class SubmissionVC: UIViewController {
     
     @IBOutlet var mapView: MKMapView!
     
+    
+    /*
+     *
+     *long press will drop a pin on the pressed location on the map
+     *
+     */
     @IBAction func gesRec(_ sender: Any) {
         
         if (sender as AnyObject).state == .began {
@@ -56,6 +62,7 @@ class SubmissionVC: UIViewController {
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
         
+        
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
@@ -65,33 +72,53 @@ class SubmissionVC: UIViewController {
         currentLocation()
     }
     
-    func addAnnotation(location: CLLocationCoordinate2D){
+    /*
+     *
+     * adds annotation to the map
+     *
+     */
+    func addAnnotation(location: CLLocationCoordinate2D, title: String = ""){
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
+        annotation.subtitle = title
         self.mapView.addAnnotation(annotation)
         
+        // set the location on the model to the new location
         reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
     
+    /*
+     *
+     * displays current location
+     *
+     */
     func currentLocation() {
+<<<<<<< HEAD
 //        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
         
         var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
         locValue.latitude = 21.4858
         locValue.longitude = 39.1925
+=======
+        //current coordinates grapped from location manager on the device
+        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        //zoom of the map
+>>>>>>> 2e742aa13469fe04cdc9d55bfa887bb03353b56d
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
         mapView.setRegion(region, animated: true)
+        
+        //passing the coordinates and title of the pin on the map "current location"
+        addAnnotation(location: locValue, title: "Current Location")
 
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locValue
-        annotation.subtitle = "Current Location"
-        mapView.addAnnotation(annotation)
-        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
     
 
-    
+    /*
+     *
+     * show keyboard and move view up
+     *
+     */
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -100,6 +127,11 @@ class SubmissionVC: UIViewController {
         }
     }
     
+    /*
+     *
+     * hide keyboard move view down
+     *
+     */
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
@@ -108,7 +140,7 @@ class SubmissionVC: UIViewController {
     
     @IBAction func submitButton(_ sender: Any) {
         
-        // add date, message, location to the repor array
+        // add current date to view model
         reportViewModel.addDate()
         
         // check if description length is less than 10 or greater than 160
@@ -121,10 +153,15 @@ class SubmissionVC: UIViewController {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         } else {
+<<<<<<< HEAD
             
+=======
+>>>>>>> 2e742aa13469fe04cdc9d55bfa887bb03353b56d
             // Add message after validation
             reportViewModel.addMessage(msg: message.text)
 
+            // append the reportViewModel to the singlton reports array of reportViewModel objects
+            // to be retrieved globally on the app when ever intialized
             Global.shared.reports.append(reportViewModel)
         }
         
@@ -134,23 +171,13 @@ class SubmissionVC: UIViewController {
         
         let alertAction = UIAlertAction(title: "Back", style: .cancel, handler:
         { action in
+            // pop this view controller and go back to root view controller
             self.navigationController?.popToRootViewController(animated: true)
         } )
         
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
-        
-        
     }
-    
-    func languageDetection(for string: String) -> String? {
-        let recog = NLLanguageRecognizer()
-        recog.processString(string)
-        guard let languageCode = recog.dominantLanguage?.rawValue else { return nil }
-        let detectedLangauge = Locale.current.localizedString(forIdentifier: languageCode)
-        return detectedLangauge
-    }
-    
 }
 
 

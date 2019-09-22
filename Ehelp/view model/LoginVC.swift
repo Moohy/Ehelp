@@ -1,11 +1,3 @@
-//
-//  LoginVC.swift
-//  Ehelp
-//
-//  Created by Mohammed on 18/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import UIKit
 
 class LoginVC: UIViewController {
@@ -17,19 +9,13 @@ class LoginVC: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         email.text = ""
         password.text = ""
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        if(validateUser()){
+        if(!validateUser()){
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
             self.present(nextVC, animated: true, completion: nil)
         }else {
@@ -37,6 +23,11 @@ class LoginVC: UIViewController {
         }
     }
 
+    /*
+     *
+     * based on the user model check user email and password in order to login
+     *
+     */
     func validateUser() -> Bool {
         if let index = userViewModel!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
             if(userViewModel![index]["password"] as! String == password.text! ){
@@ -46,6 +37,11 @@ class LoginVC: UIViewController {
         return false
     }
     
+    /*
+     *
+     * present alert if invalid info was entered
+     *
+     */
     func invalidUser() {
         let alertController:UIAlertController = UIAlertController(title: "Error", message: "Username/Password is not valid", preferredStyle: UIAlertController.Style.alert)
         

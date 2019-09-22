@@ -1,11 +1,3 @@
-//
-//  EhelpTests.swift
-//  EhelpTests
-//
-//  Created by Mohammed on 2/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import XCTest
 @testable import Ehelp
 

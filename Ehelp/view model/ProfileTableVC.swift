@@ -1,11 +1,3 @@
-//
-//  ProfileTableVC.swift
-//  Ehelp
-//
-//  Created by Mohammed on 10/9/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import UIKit
 
 class ProfileTableVC: UITableViewController {
@@ -21,6 +13,8 @@ class ProfileTableVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Reports"
+        
+        // reloads each time the view will appear
         self.tableView.reloadData()
     }
 
@@ -38,7 +32,8 @@ class ProfileTableVC: UITableViewController {
 
         guard let emergyncyType = reportViewModel?[indexPath.row].getEmergency() else {return cell}
         guard let date = reportViewModel?[indexPath.row].getDate() else {return cell}
-        cell.label.text = "\(emergyncyType)-\(date)"
+        cell.titleLabel.text = emergyncyType
+        cell.timeLabel.text = "submitted on: \(date)"
 
         return cell
     }
