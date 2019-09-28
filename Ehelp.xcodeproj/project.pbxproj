@@ -26,6 +26,7 @@
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
 		10EE8D2723366D0E00BB44F2 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */; };
 		10EE8D292336860100BB44F2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE8D282336860100BB44F2 /* UserViewModel.swift */; };
+		10F81819233F43E800AA782D /* TwilioApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F81818233F43E800AA782D /* TwilioApi.swift */; };
 		1857DC38AADA3D9D7BD0748C /* Pods_EhelpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C04AF30F721F465AA4B4CE52 /* Pods_EhelpTests.framework */; };
 		98644FA1DE4FECC93914BF94 /* Pods_Ehelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952A1A66FCAACFD87B4F597D /* Pods_Ehelp.framework */; };
 		9F71944297DD412B3EB30DA5 /* Pods_Ehelp_EhelpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF7D3C1106371C587610FBA /* Pods_Ehelp_EhelpUITests.framework */; };
@@ -75,6 +76,7 @@
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 		10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		10EE8D282336860100BB44F2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		10F81818233F43E800AA782D /* TwilioApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwilioApi.swift; sourceTree = "<group>"; };
 		31F3FF8118320AC2F645EC3B /* Pods-Ehelp-EhelpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ehelp-EhelpUITests.debug.xcconfig"; path = "Target Support Files/Pods-Ehelp-EhelpUITests/Pods-Ehelp-EhelpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BDBF657648FCA9D9CA6C362 /* Pods-Ehelp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ehelp.release.xcconfig"; path = "Target Support Files/Pods-Ehelp/Pods-Ehelp.release.xcconfig"; sourceTree = "<group>"; };
 		64F6EB071799FD0D5FF11811 /* Pods-EhelpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EhelpTests.release.xcconfig"; path = "Target Support Files/Pods-EhelpTests/Pods-EhelpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				10417149231D0695006EE103 /* Assets.xcassets */,
 				1041714E231D0695006EE103 /* Info.plist */,
 				10744298233F2D6600142B62 /* GoogleService-Info.plist */,
+				10F81818233F43E800AA782D /* TwilioApi.swift */,
 			);
 			path = Ehelp;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				10EE8D292336860100BB44F2 /* UserViewModel.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				1041717423224B4C006EE103 /* Report.swift in Sources */,
+				10F81819233F43E800AA782D /* TwilioApi.swift in Sources */,
 				10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

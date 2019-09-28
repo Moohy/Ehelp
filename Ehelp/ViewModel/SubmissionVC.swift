@@ -149,6 +149,16 @@ class SubmissionVC: UIViewController {
         } else {
             // Add message after validation
             reportViewModel.addMessage(msg: message.text)
+            
+            
+            // api goes here
+            TwilioApi.sendSMS(with: reportViewModel) {(result, error) in
+                if let error = error {
+                    self.alert(title: "Error", message: error.localizedDescription)
+                }
+                
+            }
+            
 
             // append the reportViewModel to the singlton reports array of reportViewModel objects
             // to be retrieved globally on the app when ever intialized
@@ -173,5 +183,13 @@ class SubmissionVC: UIViewController {
 
 extension SubmissionVC: CLLocationManagerDelegate,MKMapViewDelegate {
     
+}
+
+extension UIViewController{
+    func alert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 
