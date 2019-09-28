@@ -35,7 +35,7 @@ class EhelpUITests: XCTestCase {
         let app = XCUIApplication()
 
         // click sign up button
-        app.buttons["signup"].tap()
+        app.buttons[" Sign Up"].tap()
         // sleep for 2 seconds
         sleep(2)
         // email field
@@ -69,7 +69,7 @@ class EhelpUITests: XCTestCase {
         XCTAssertEqual(buttonCount, 2)
         // wait for 1 second
         sleep(1)
-        app.buttons["Cancel"].tap()
+        app.buttons[" Cancel"].tap()
         // always sign in since we always sign out after each method runs
         signIn()
     }
@@ -107,8 +107,8 @@ class EhelpUITests: XCTestCase {
         let app = XCUIApplication()
         // get buttons
         let policeButon = app.buttons["Police"]
-        let fireFighterButton = app.buttons["Fire Fighter"]
-        let ambulanceButton = app.buttons["Ambulance"]
+        let fireFighterButton = app.buttons["   Fire Fighter"]
+        let ambulanceButton = app.buttons["    Ambulance"]
         //test if policeButon exists
         XCTAssertTrue(policeButon.exists)
         //test if fireFighterButton exists
@@ -163,7 +163,7 @@ class EhelpUITests: XCTestCase {
 
     }
     
-    func testEmptyValidReviwingReport() {
+    func testInitialValidReviwingReport() {
                 
         // get reference to the app
         let app = XCUIApplication()
@@ -180,7 +180,7 @@ class EhelpUITests: XCTestCase {
         // test if there exist only one report
         let tablesQuery = app.tables
         let cellCount = tablesQuery.cells.count
-        XCTAssertEqual(cellCount, 0)
+        XCTAssertEqual(cellCount, 3)
         // menu tab bar
         tabBarsQuery.buttons["Menu"].tap()
         
@@ -191,17 +191,17 @@ class EhelpUITests: XCTestCase {
     }
     
     func testNoneEmptyValidReviwingReport() {
-        
+
         // submit report before reviwing reports
         // get report detail after submitting a report
         let emergencyType = submittingReport()
-        
+
         // get reference to the app
         let app = XCUIApplication()
-        
+
         // reference to tab bar
         let tabBarsQuery = app.tabBars
-        
+
         // report button on tab bar
         let reportsButton = tabBarsQuery.buttons["Reports"]
         // tap the report button
@@ -212,18 +212,18 @@ class EhelpUITests: XCTestCase {
         let tablesQuery = app.tables
         let cellCount = tablesQuery.cells.count
         XCTAssertEqual(cellCount, 1)
-        
+
         // tab on recent created report
         app.tables.staticTexts[emergencyType].tap()
-        
-        
+
+
         // go back to the report menu
         app.navigationBars["Ehelp.TableCellReportDetailsVC"].buttons["Reports"].tap()
         //
-        
+
         // click on menu tab bar
         tabBarsQuery.buttons["Menu"].tap()
-        
+
     }
     
     // this function will triger after sign in function
@@ -299,7 +299,7 @@ class EhelpUITests: XCTestCase {
         passwordTextField.typeText(validPassword)
         
         // login
-        app.buttons["login"].tap()
+        app.buttons[" Sign In"].tap()
     }
     
     func signUp(){
@@ -308,13 +308,13 @@ class EhelpUITests: XCTestCase {
         let validPassword = "123456"
         let validFullName = "Mohammed Alotaibi"
         let validID = "123456"
-        let validPhoneNumber = "0466636990"
+        let validPhoneNumber = "123456789"
         
         // get reference to the app
         let app = XCUIApplication()
         
         // click sign up button
-        app.buttons["signup"].tap()
+        app.buttons[" Sign Up"].tap()
         
         // email field
         let emailTextField = app.textFields["Email"]
@@ -343,6 +343,8 @@ class EhelpUITests: XCTestCase {
         phoneNumberTextField.typeText(validPhoneNumber)
         
         // sign up
-        app.buttons["Sign up"].tap()
+        app.buttons[" Sign Up"].tap()
+    
+        
     }
 }
