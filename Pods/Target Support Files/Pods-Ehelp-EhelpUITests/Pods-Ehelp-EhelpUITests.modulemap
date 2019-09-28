@@ -1,0 +1,6 @@
+framework module Pods_Ehelp_EhelpUITests {
+  umbrella header "Pods-Ehelp-EhelpUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

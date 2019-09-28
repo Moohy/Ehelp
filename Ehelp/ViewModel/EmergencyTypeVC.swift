@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 
 class EmergencyTypeVC: UIViewController {
     
@@ -32,6 +33,14 @@ class EmergencyTypeVC: UIViewController {
 
     
     @IBAction func signoutButton(_ sender: Any) {
+        
+        do {
+               try Auth.auth().signOut()
+           }
+        catch let signOutError as NSError {
+               print ("Error signing out: %@", signOutError)
+           }
+        
         // dismiss
         dismiss(animated: true, completion: nil)
     }

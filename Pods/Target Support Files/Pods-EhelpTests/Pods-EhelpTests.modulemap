@@ -1,0 +1,6 @@
+framework module Pods_EhelpTests {
+  umbrella header "Pods-EhelpTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

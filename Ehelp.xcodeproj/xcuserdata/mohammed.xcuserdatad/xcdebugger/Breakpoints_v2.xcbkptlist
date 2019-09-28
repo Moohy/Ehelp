@@ -12,7 +12,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "590830709.5267071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3"
@@ -29,7 +28,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "590830709.5281121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "4"
@@ -46,12 +44,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EhelpUITests/EhelpUITests.swift"
-            timestampString = "590830709.529081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "submittingReport()"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "signOut()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

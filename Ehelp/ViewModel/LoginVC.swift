@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 
 class LoginVC: UIViewController {
     
@@ -33,11 +34,25 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        if(validateUser()){
-            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            self.present(nextVC, animated: true, completion: nil)
-        }else {
-            invalidUser()
+//        if(validateUser()){
+//            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+//            self.present(nextVC, animated: true, completion: nil)
+//        }else {
+//            invalidUser()
+//        }
+        
+        Auth.auth().signIn(withEmail: email.text!, password: password.text!) { (user, error) in
+           if error == nil{
+                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                self.present(nextVC, animated: true, completion: nil)
+            }
+            else{
+             let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                            
+              alertController.addAction(defaultAction)
+              self.present(alertController, animated: true, completion: nil)
+                 }
         }
     }
 

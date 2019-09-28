@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
 
 class ProfileTableVC: UITableViewController {
     
@@ -15,6 +16,13 @@ class ProfileTableVC: UITableViewController {
     }
     
     @IBAction func signoutButton(_ sender: Any) {
+        do {
+               try Auth.auth().signOut()
+           }
+        catch let signOutError as NSError {
+               print ("Error signing out: %@", signOutError)
+           }
+        
         // dismiss
         dismiss(animated: true, completion: nil)
     }

@@ -1,0 +1,6 @@
+framework module Pods_Ehelp {
+  umbrella header "Pods-Ehelp-umbrella.h"
+
+  export *
+  module * { export * }
+}

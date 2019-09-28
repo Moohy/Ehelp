@@ -1,5 +1,7 @@
 import UIKit
 
+import FirebaseAuth
+
 class SignupVC: UIViewController {
     
     private var userViewModel = UserViewModel()
@@ -84,18 +86,35 @@ class SignupVC: UIViewController {
     
     @IBAction func signupButton(_ sender: Any) {
         // validity check
+//        if((isValidInformation())&&(isValidEmail(testStr: email.text ?? ""))){
+//            // add the new user to the userViewModel
+//            userViewModel.setEmail(email: email.text!)
+//            userViewModel.setPassword(password: password.text!)
+//            userViewModel.setName(name: name.text!)
+//            userViewModel.setID(id: id.text!)
+//            userViewModel.setPhoneNum(phoneNum: phoneNum.text!)
+//            Global.shared.users.append(userViewModel.getDictionary() as [String : AnyObject])
+//            dismiss(animated: true, completion: nil)
+//        }else{
+//            password.text = ""
+//        }
+        
         if((isValidInformation())&&(isValidEmail(testStr: email.text ?? ""))){
-            // add the new user to the userViewModel
-            userViewModel.setEmail(email: email.text!)
-            userViewModel.setPassword(password: password.text!)
-            userViewModel.setName(name: name.text!)
-            userViewModel.setID(id: id.text!)
-            userViewModel.setPhoneNum(phoneNum: phoneNum.text!)
-            Global.shared.users.append(userViewModel.getDictionary() as [String : AnyObject])
-            dismiss(animated: true, completion: nil)
-        }else{
-            password.text = ""
+            Auth.auth().createUser(withEmail: email.text!, password: password.text!){ (user, error) in
+             if error == nil {
+                self.dismiss(animated: true, completion: nil)
+             }
+             else{
+               let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+               let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                                
+                alertController.addAction(defaultAction)
+                self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
         }
+              
         
     }
     
