@@ -11,6 +11,9 @@ class SubmissionVC: UIViewController {
     @IBOutlet weak var message: UITextView!
     let locationManager = CLLocationManager()
     
+    var locationLat: Double = 0
+    var locationLong: Double = 0
+    
     @IBOutlet var mapView: MKMapView!
     
     
@@ -40,17 +43,17 @@ class SubmissionVC: UIViewController {
         self.message.accessibilityIdentifier = "descriptionTV"
 
         // keyboard observer
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.locationManager.requestAlwaysAuthorization()
-        
+
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-        
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -68,7 +71,12 @@ class SubmissionVC: UIViewController {
         }
 
         mapView.mapType = MKMapType.standard
-
+        
+        guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationLat = locValue.latitude
+        locationLong = locValue.longitude
+        
         currentLocation()
     }
     
@@ -93,10 +101,12 @@ class SubmissionVC: UIViewController {
      *
      */
     func currentLocation() {
+        var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
 
-        //current coordinates grapped from location manager on the device
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-  
+        locValue.latitude = locationLat
+        locValue.longitude = locationLong
+        
+        print(locationLat, ", ", locationLong)
         //zoom of the map
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
@@ -114,7 +124,7 @@ class SubmissionVC: UIViewController {
      *
      */
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height
             }
@@ -183,6 +193,9 @@ class SubmissionVC: UIViewController {
 
 extension SubmissionVC: CLLocationManagerDelegate,MKMapViewDelegate {
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+    }
 }
 
 extension UIViewController{
