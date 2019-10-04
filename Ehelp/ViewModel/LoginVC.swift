@@ -13,11 +13,18 @@ class LoginVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
+        if Auth.auth().currentUser != nil {
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+            self.present(nextVC, animated: true, completion: nil)
+            print("imhere")
+        }
         email.text = ""
         password.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+
         email.text = ""
         password.text = ""
         

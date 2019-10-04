@@ -3,6 +3,7 @@ import MapKit
 import CoreLocation
 import NaturalLanguage
 import UIKit.UIAlertController
+import CoreData
 
 class SubmissionVC: UIViewController {
     
@@ -162,12 +163,14 @@ class SubmissionVC: UIViewController {
             
             
             // api goes here
-            TwilioApi.sendSMS(with: reportViewModel) {(result, error) in
-                if let error = error {
-                    self.alert(title: "Error", message: error.localizedDescription)
-                }
-                
-            }
+//            TwilioApi.sendSMS(with: reportViewModel) {(result, error) in
+//                if let error = error {
+//                    self.alert(title: "Error", message: error.localizedDescription)
+//                }
+//                
+//            }
+            
+            coreDateCreation()
             
 
             // append the reportViewModel to the singlton reports array of reportViewModel objects
@@ -187,6 +190,43 @@ class SubmissionVC: UIViewController {
         
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func coreDateCreation(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+        
+//        let context = appDelegate.persistentContainer.viewContext
+//
+//        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
+//        let newReport = NSManagedObject(entity: entity!, insertInto: context)
+//
+        
+
+        // 1
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+          NSEntityDescription.entity(forEntityName: "Reports",
+                                     in: managedContext)!
+        
+        let newReport = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        newReport.setValue(reportViewModel.getEmergency(), forKey: "emergencyType")
+        newReport.setValue(reportViewModel.getMessage(), forKey: "message")
+        newReport.setValue(reportViewModel.latitude(), forKey: "latitude")
+        newReport.setValue(reportViewModel.longitude(), forKey: "longitude")
+        newReport.setValue(reportViewModel.getDate(), forKey: "date")
+        
+        do {
+           try managedContext.save()
+          } catch {
+           print("Failed saving")
+        }
+        
+        
     }
 }
 

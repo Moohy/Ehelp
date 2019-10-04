@@ -24,6 +24,7 @@
 		10BEC5012344C226009FE340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10BEC5002344C226009FE340 /* GoogleService-Info.plist */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
+		10EA3E4423471AFB006E8379 /* Report.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10EA3E4223471AFB006E8379 /* Report.xcdatamodeld */; };
 		10EE8D2723366D0E00BB44F2 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */; };
 		10EE8D292336860100BB44F2 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EE8D282336860100BB44F2 /* UserViewModel.swift */; };
 		10F81819233F43E800AA782D /* TwilioApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F81818233F43E800AA782D /* TwilioApi.swift */; };
@@ -74,6 +75,7 @@
 		10BEC5002344C226009FE340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
+		10EA3E4323471AFB006E8379 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
 		10EE8D282336860100BB44F2 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		10F81818233F43E800AA782D /* TwilioApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwilioApi.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				1041717323224B4C006EE103 /* Report.swift */,
 				1041717523225028006EE103 /* Global.swift */,
 				1081B6742331C974000486AB /* User.swift */,
+				10EA3E4223471AFB006E8379 /* Report.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				106699482330ACA5004EEED7 /* SubmissionVC.swift in Sources */,
 				1081B6752331C974000486AB /* User.swift in Sources */,
 				1081B6772331CEE1000486AB /* SignupVC.swift in Sources */,
+				10EA3E4423471AFB006E8379 /* Report.xcdatamodeld in Sources */,
 				10EE8D292336860100BB44F2 /* UserViewModel.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				1041717423224B4C006EE103 /* Report.swift in Sources */,
@@ -818,6 +822,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		10EA3E4223471AFB006E8379 /* Report.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				10EA3E4323471AFB006E8379 /* User.xcdatamodel */,
+			);
+			currentVersion = 10EA3E4323471AFB006E8379 /* User.xcdatamodel */;
+			path = Report.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 10417137231D0692006EE103 /* Project object */;
 }

@@ -1,7 +1,10 @@
 import UIKit
 import FirebaseAuth
+import CoreData
 
-class ProfileTableVC: UITableViewController {
+class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    var reports: [NSManagedObject] = []
     
     var reportViewModel : [ReportViewModel]? {
         return Global.shared.reports
@@ -11,8 +14,31 @@ class ProfileTableVC: UITableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Reports"
         
+        setupFetchedResultsController()
+        
         // reloads each time the view will appear
         self.tableView.reloadData()
+        
+        
+    }
+    
+    func setupFetchedResultsController() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+
+        
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+          NSFetchRequest<NSManagedObject>(entityName: "Reports")
+        
+        //3
+        do {
+          reports = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func signoutButton(_ sender: Any) {
@@ -32,16 +58,16 @@ class ProfileTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reportViewModel?.count ?? 0
+        return reports.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileCell
 
-        guard let emergyncyType = reportViewModel?[indexPath.row].getEmergency() else {return cell}
-        guard let date = reportViewModel?[indexPath.row].getDate() else {return cell}
-        cell.titleLabel.text = emergyncyType
+        guard let emergyncyType = reports[indexPath.row].value(forKey: "emergencyType")  else {return cell}
+        guard let date = reports[indexPath.row].value(forKey: "date") else {return cell}
+        cell.titleLabel.text = emergyncyType as! String
         cell.timeLabel.text = "submitted on: \(date)"
 
         return cell
@@ -56,9 +82,9 @@ class ProfileTableVC: UITableViewController {
             
             //value passes to the next view here!
             
-            tableCellReportDetails.message = reportViewModel![indexPath.row].getMessage()
-            tableCellReportDetails.latitude = reportViewModel![indexPath.row].latitude()
-            tableCellReportDetails.longitude = reportViewModel![indexPath.row].longitude()
+            tableCellReportDetails.message = reports[indexPath.row].value(forKey: "message") as! String
+            tableCellReportDetails.latitude = reports[indexPath.row].value(forKey: "latitude") as! Double
+            tableCellReportDetails.longitude = reports[indexPath.row].value(forKey: "longitude") as! Double
             
             self.navigationController?.pushViewController(tableCellReportDetails, animated: true)
             
