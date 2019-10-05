@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseAuth
+import LocalAuthentication
 
 class EmergencyTypeVC: UIViewController {
     

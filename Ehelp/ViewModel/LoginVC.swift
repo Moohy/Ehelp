@@ -1,5 +1,7 @@
 import UIKit
 import FirebaseAuth
+import LocalAuthentication
+
 
 class LoginVC: UIViewController {
     
@@ -12,6 +14,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    
     override func viewDidLoad() {
         if Auth.auth().currentUser != nil {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
@@ -20,7 +23,55 @@ class LoginVC: UIViewController {
         }
         email.text = ""
         password.text = ""
+        
+        
+        //
+        handleFaceId()
     }
+    
+    /*
+     
+    face Id code starts here
+     */
+    
+    @IBAction func switchButton(_ sender: Any) {
+        handleFaceId()
+    }
+    
+    
+    @objc fileprivate func handleFaceId() {
+        let context = LAContext()
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "To have an access to the app") { (wasSuccessful, error) in
+                if wasSuccessful {
+                    self.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                          let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+                                            self.present(nextVC, animated: true, completion: nil)
+                    }
+                   
+                } else {
+                    let alertController:UIAlertController = UIAlertController(title: "Incoreect Credentials", message: "Please try again", preferredStyle: UIAlertController.Style.alert)
+                    
+                    let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
+                    alertController.addAction(alertAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        } else {
+            let alertController:UIAlertController = UIAlertController(title: "FaceId not configured", message: "Please go to settings", preferredStyle: UIAlertController.Style.alert)
+            
+            let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
+            alertController.addAction(alertAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+    /*
+     face Id code ends here
+     */
     
     override func viewWillAppear(_ animated: Bool) {
         

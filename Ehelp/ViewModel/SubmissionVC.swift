@@ -4,6 +4,7 @@ import CoreLocation
 import NaturalLanguage
 import UIKit.UIAlertController
 import CoreData
+import Speech
 
 class SubmissionVC: UIViewController {
     
@@ -34,7 +35,33 @@ class SubmissionVC: UIViewController {
         }
         
     }
-    
+    //  mohammed code starts here for voice recognision
+
+    /*
+     *
+     *
+     *
+
+     *
+     *
+     *
+     *
+     *
+     *
+     */
+
+    /*
+     *
+     *
+     *
+
+     *
+     *
+     *
+     *
+     *
+     *
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
 
