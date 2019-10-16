@@ -12,6 +12,36 @@ class SignupVC: UIViewController {
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var phoneNum: UITextField!
+    
+    override func viewDidLoad() {
+        // keyboard observer
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    /*
+     *
+     * show keyboard and move view up
+     *
+     */
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    /*
+     *
+     * hide keyboard move view down
+     *
+     */
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
 
     
     /*
@@ -19,10 +49,16 @@ class SignupVC: UIViewController {
      * check validity of the email and return true/false based on that
      *
      */
-    func isValidEmail(testStr:String) -> Bool {
+    func isValidEmail(email:String) -> Bool {
         let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
         let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
+        return emailTest.evaluate(with: email)
+    }
+    
+    func isValidPhoneNumber(phoneNumber:String) -> Bool {
+        let phoneRegEx = "^\\+[\\d]{11}$"
+        let phoneTest = NSPredicate(format:"SELF MATCHES[c] %@", phoneRegEx)
+        return phoneTest.evaluate(with: phoneNumber)
     }
     
     /*
@@ -35,20 +71,17 @@ class SignupVC: UIViewController {
         if((email.text!.isEmpty) || (password.text!.isEmpty) ||
             (name.text!.isEmpty) || (id.text!.isEmpty) ||
             (phoneNum.text!.isEmpty) ){
-            let alertController:UIAlertController = UIAlertController(title: "Error", message: "Make sure you complete all fields", preferredStyle: UIAlertController.Style.alert)
-            
-            let alertAction:UIAlertAction = UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler:nil)
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
+            alert(title: "Error", message: "Make sure you complete all fields")
             return false
         }
         // alert if email is invalid
-        if (isValidEmail(testStr: email.text!) == false) {
-            let alertController:UIAlertController = UIAlertController(title: "Error", message: "Email is Invalid", preferredStyle: UIAlertController.Style.alert)
-            
-            let alertAction:UIAlertAction = UIAlertAction(title: "Back", style: UIAlertAction.Style.default, handler:nil)
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
+        if (isValidEmail(email: email.text!) == false) {
+            alert(title: "Error", message: "Email is Invalid")
+            return false
+        }
+        
+        if (isValidPhoneNumber(phoneNumber: phoneNum.text!) == false) {
+            alert(title: "Error", message: "Phone Number is Invalid.\nPhone number format : +12345678910")
             return false
         }
         return true
@@ -69,7 +102,7 @@ class SignupVC: UIViewController {
 //            password.text = ""
 //        }
         
-        if((isValidInformation())&&(isValidEmail(testStr: email.text ?? ""))){
+        if((isValidInformation())&&(isValidEmail(email: email.text ?? ""))){
             Auth.auth().createUser(withEmail: email.text!, password: password.text!){ (user, error) in
              if error == nil {
                 self.dismiss(animated: true, completion: nil)
@@ -92,4 +125,12 @@ class SignupVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+}
+
+extension UIViewController{
+    func alert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }

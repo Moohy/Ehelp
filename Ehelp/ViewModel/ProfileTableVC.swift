@@ -4,7 +4,9 @@ import CoreData
 
 class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    var reports: [NSManagedObject] = []
+    var viewModel = ReportViewModel()
+    var reports: [Report]!
+    
     
     var reportViewModel : [ReportViewModel]? {
         return Global.shared.reports
@@ -14,7 +16,9 @@ class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Reports"
         
-        setupFetchedResultsController()
+        reports = viewModel.getReports()
+        
+//        setupFetchedResultsController()
         
         // reloads each time the view will appear
         self.tableView.reloadData()
@@ -22,25 +26,25 @@ class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
         
     }
     
-    func setupFetchedResultsController() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-
-        
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest =
-          NSFetchRequest<NSManagedObject>(entityName: "Reports")
-        
-        //3
-        do {
-          reports = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
-    
+//    func setupFetchedResultsController() {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+//
+//
+//        let managedContext =
+//          appDelegate.persistentContainer.viewContext
+//
+//        //2
+//        let fetchRequest =
+//          NSFetchRequest<NSManagedObject>(entityName: "Report")
+//
+//        //3
+//        do {
+//          reports = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//          print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//    }
+//
     @IBAction func signoutButton(_ sender: Any) {
         do {
                try Auth.auth().signOut()
@@ -90,6 +94,21 @@ class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
             
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            viewModel.deleteReport(date: reports[indexPath.row].value(forKey:"date") as! String)
+            reports.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        }
     }
  
 

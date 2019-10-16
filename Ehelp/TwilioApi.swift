@@ -7,7 +7,8 @@ class TwilioApi{
         let from = "+12055259360"
         let to = "+61478110131"
         
-        let message = "\(body.getEmergency()) - \(body.getMessage()) - Location: \(body.latitude()), \(body.longitude())"
+//        let message = "\(body.getEmergency()) - \(body.getMessage()) - Location: \(body.latitude()), \(body.longitude())"
+        let message = "hey"
         
             // REQUEST and HEADER info
             var req = URLRequest(url: URL(string: "https://\(SID):\(secret)@api.twilio.com/2010-04-01/Accounts/\(SID)/Messages.json")!)

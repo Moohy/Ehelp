@@ -22,7 +22,7 @@ class EmergencyTypeVC: UIViewController {
         super.viewDidLoad()
         
         
-        sampleData()
+//        sampleData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,25 +31,25 @@ class EmergencyTypeVC: UIViewController {
         faceIdSwitch.setOn(faceId, animated: true)
     }
     
-    func sampleData() {
-        reportViewModel.addDate()
-        reportViewModel.addMessage(msg: "heart attack!")
-        reportViewModel.addEmergency(type: Emergency.ambulance)
-        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
-        Global.shared.reports.append(reportViewModel)
-        
-        reportViewModel.addDate()
-        reportViewModel.addMessage(msg: "car accedent and a huge fire!")
-        reportViewModel.addEmergency(type: Emergency.fireFighter)
-        reportViewModel.addLocation(lat: -33.8688, long: 151.2093)
-        Global.shared.reports.append(reportViewModel)
-        
-        reportViewModel.addDate()
-        reportViewModel.addMessage(msg: "a theif stole woolworths!")
-        reportViewModel.addEmergency(type: Emergency.police)
-        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
-        Global.shared.reports.append(reportViewModel)
-    }
+//    func sampleData() {
+//        reportViewModel.addDate()
+//        reportViewModel.addMessage(msg: "heart attack!")
+//        reportViewModel.addEmergency(type: Emergency.ambulance)
+//        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
+//        Global.shared.reports.append(reportViewModel)
+//        
+//        reportViewModel.addDate()
+//        reportViewModel.addMessage(msg: "car accedent and a huge fire!")
+//        reportViewModel.addEmergency(type: Emergency.fireFighter)
+//        reportViewModel.addLocation(lat: -33.8688, long: 151.2093)
+//        Global.shared.reports.append(reportViewModel)
+//        
+//        reportViewModel.addDate()
+//        reportViewModel.addMessage(msg: "a theif stole woolworths!")
+//        reportViewModel.addEmergency(type: Emergency.police)
+//        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
+//        Global.shared.reports.append(reportViewModel)
+//    }
 
     
     @IBAction func signoutButton(_ sender: Any) {
@@ -67,26 +67,26 @@ class EmergencyTypeVC: UIViewController {
     
     @IBAction func police(_ sender: Any) {
         //choose emergency from emergency enum "police"
-        reportViewModel.addEmergency(type: Emergency.police)
+//        reportViewModel.addEmergency(type: Emergency.police)
+        
+        
+
         
         //call next view controller
-        nextView()
+        nextView(emergencyType: Emergency.police.rawValue )
     }
     
     @IBAction func fireFighter(_ sender: Any) {
         //choose emergency from emergency enum "firefighter"
-        reportViewModel.addEmergency(type: Emergency.fireFighter)
-        
-        //call next view controller
-        nextView()
+        nextView(emergencyType: Emergency.fireFighter.rawValue )
     }
     
     @IBAction func ambulance(_ sender: Any) {
-        reportViewModel.addEmergency(type: Emergency.ambulance)
-        
-        //call next view controller
-        nextView()
+//        reportViewModel.addEmergency(type: Emergency.ambulance)
+        nextView(emergencyType: Emergency.ambulance.rawValue )
     }
+    
+    
     @IBAction func switchTapped(_ sender: Any) {
         if faceIdSwitch.isOn{
             faceIdCoreDateSetting(value: true)
@@ -159,11 +159,12 @@ class EmergencyTypeVC: UIViewController {
      * present next view by pushing it to the navigation controller
      *
      */
-    func nextView(){
+    func nextView(emergencyType: String){
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         
         //pass view model to the instance of viewmodel on the next view controller
-        nextVC.reportViewModel = reportViewModel
+//        nextVC.reportViewModel = reportViewModel
+        nextVC.emergencyType = emergencyType
         
         //push and persent
         self.navigationController?.pushViewController(nextVC, animated: true)

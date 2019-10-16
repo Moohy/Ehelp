@@ -31,9 +31,51 @@ class LoginVC: UIViewController {
         email.text = ""
         password.text = ""
         
- 
+//        // keyboard observer
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         
+        
+    }
+//
+//    @objc func keyboardWillShow(notification:NSNotification) {
+//        adjustingHeight(show: true, notification: notification)
+//    }
+//
+//    @objc func keyboardWillHide(notification:NSNotification) {
+//        adjustingHeight(show: false, notification: notification)
+//    }
+////
+//    func adjustingHeight(show:Bool, notification:NSNotification) {
+//        // 1
+//        var userInfo = notification.userInfo!
+//        // 2
+//        let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
+//        // 3
+//        let animationDurarion = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
+//        // 4
+//        let changeInHeight = (keyboardFrame.cgRectValue + 40) * (show ? 1 : -1)
+//        //5
+//        UIView.animateWithDuration(animationDurarion, animations: { () -> Void in
+//            self.bottomConstraint.constant += changeInHeight
+//        })
+//
+//    }
+//
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+
+    
+    func textFieldDidBeginEditing(textField: UITextField!)
+    {
+//        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField!)
+    {
+//        activeField = nil
     }
 
     
@@ -129,7 +171,7 @@ class LoginVC: UIViewController {
             handleFaceId()
         }
         
-        setupUser()
+//        setupUser()
     }
     
     func setupUser() {

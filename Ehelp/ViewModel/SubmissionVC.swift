@@ -10,6 +10,8 @@ class SubmissionVC: UIViewController {
     
     var reportViewModel = ReportViewModel()
     
+    var emergencyType: String!
+    
     @IBOutlet weak var message: UITextView!
     let locationManager = CLLocationManager()
     
@@ -35,33 +37,8 @@ class SubmissionVC: UIViewController {
         }
         
     }
-    //  mohammed code starts here for voice recognision
 
-    /*
-     *
-     *
-     *
-
-     *
-     *
-     *
-     *
-     *
-     *
-     */
-
-    /*
-     *
-     *
-     *
-
-     *
-     *
-     *
-     *
-     *
-     *
-     */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -119,8 +96,11 @@ class SubmissionVC: UIViewController {
         annotation.subtitle = title
         self.mapView.addAnnotation(annotation)
         
+        locationLat = annotation.coordinate.latitude
+        locationLong = annotation.coordinate.longitude
+        
         // set the location on the model to the new location
-        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
+//        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
     
     /*
@@ -173,7 +153,7 @@ class SubmissionVC: UIViewController {
     @IBAction func submitButton(_ sender: Any) {
         
         // add current date to view model
-        reportViewModel.addDate()
+//        reportViewModel.addDate()
         
         // check if description length is less than 10 or greater than 160
         // if so, then alert user to meet the specified length
@@ -186,7 +166,7 @@ class SubmissionVC: UIViewController {
             present(alertController, animated: true, completion: nil)
         } else {
             // Add message after validation
-            reportViewModel.addMessage(msg: message.text)
+//            reportViewModel.addMessage(msg: message.text)
             
             
             // api goes here
@@ -197,7 +177,8 @@ class SubmissionVC: UIViewController {
 //                
 //            }
             
-            coreDateCreation()
+//            coreDateCreation()
+            reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
             
 
             // append the reportViewModel to the singlton reports array of reportViewModel objects
@@ -219,42 +200,44 @@ class SubmissionVC: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func coreDateCreation(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-        
-//        let context = appDelegate.persistentContainer.viewContext
+//    func coreDateCreation(){
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+//        
+////        let context = appDelegate.persistentContainer.viewContext
+////
+////        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
+////        let newReport = NSManagedObject(entity: entity!, insertInto: context)
+////
+//        
 //
-//        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
-//        let newReport = NSManagedObject(entity: entity!, insertInto: context)
-//
-        
-
-        // 1
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-          NSEntityDescription.entity(forEntityName: "Reports",
-                                     in: managedContext)!
-        
-        let newReport = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-        
-        newReport.setValue(reportViewModel.getEmergency(), forKey: "emergencyType")
-        newReport.setValue(reportViewModel.getMessage(), forKey: "message")
-        newReport.setValue(reportViewModel.latitude(), forKey: "latitude")
-        newReport.setValue(reportViewModel.longitude(), forKey: "longitude")
-        newReport.setValue(reportViewModel.getDate(), forKey: "date")
-        
-        do {
-           try managedContext.save()
-          } catch {
-           print("Failed saving")
-        }
-        
-        
-    }
+//        // 1
+//        let managedContext =
+//          appDelegate.persistentContainer.viewContext
+//        
+//        // 2
+//        let entity =
+//          NSEntityDescription.entity(forEntityName: "Reports",
+//                                     in: managedContext)!
+//        
+//        let newReport = NSManagedObject(entity: entity,
+//                                     insertInto: managedContext)
+//        
+//        
+//        
+//        newReport.setValue(emergencyType, forKey: "emergencyType")
+//        newReport.setValue(message.text!, forKey: "message")
+//        newReport.setValue(locationLat, forKey: "latitude")
+//        newReport.setValue(locationLong, forKey: "longitude")
+//        
+//        
+//        do {
+//           try managedContext.save()
+//          } catch {
+//           print("Failed saving")
+//        }
+//        
+//        
+//    }
 }
 
 
@@ -264,12 +247,3 @@ extension SubmissionVC: CLLocationManagerDelegate,MKMapViewDelegate {
 
     }
 }
-
-extension UIViewController{
-    func alert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-}
-
