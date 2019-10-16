@@ -1,9 +1,16 @@
 import UIKit
 import FirebaseAuth
 import LocalAuthentication
+import CoreData
 
 
 class LoginVC: UIViewController {
+    
+    var fetchedData: [NSManagedObject]?
+    
+//    let nextVC = EmergencyTypeVC()
+    var aaa:Bool?
+    
     
     private var userViewModel = UserViewModel()
     
@@ -24,18 +31,34 @@ class LoginVC: UIViewController {
         email.text = ""
         password.text = ""
         
+ 
         
-        //
-        handleFaceId()
+        
     }
+
     
     /*
      
     face Id code starts here
      */
     
-    @IBAction func switchButton(_ sender: Any) {
-        handleFaceId()
+    func setupFetchedResultsController() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+
+        
+        let managedContext =
+          appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+          NSFetchRequest<NSManagedObject>(entityName: "Setting")
+        
+        //3
+        do {
+          fetchedData = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     
@@ -78,6 +101,33 @@ class LoginVC: UIViewController {
 
         email.text = ""
         password.text = ""
+        
+       setupFetchedResultsController()
+        let myBool: Bool
+        if fetchedData?.count ?? 0 > 0 {
+            myBool = (fetchedData![0].value(forKey: "faceId") != nil)
+        } else {
+            myBool = false
+            aaa = false
+        }
+
+        if (myBool) {
+//            let nextVC = EmergencyTypeVC()
+////            print(nextVC.faceIdSwitch.isOn)
+//            guard let fswitch = nextVC.faceIdSwitch else{return}
+//////            var s = nextVC.viewWithTag(10) as? UIButton
+////
+//////            var s = nextVC.uiswitch as? UISwitch
+////
+//            fswitch.setOn(true, animated: true)
+////            print(nextVC.faceIdSwitch.isOn)
+//
+//            aaa = true
+//            print(nextVC.bool)
+//            nextVC.bool = true
+            Global.shared.faceId = true
+            handleFaceId()
+        }
         
         setupUser()
     }

@@ -67,10 +67,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-nV-kJF">
-                                <rect key="frame" x="136" y="269" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -114,13 +110,13 @@
         <!--Emergency Type-->
         <scene sceneID="VUm-3h-uOp">
             <objects>
-                <viewController id="dFw-YR-wgU" customClass="EmergencyTypeVC" customModule="Ehelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="emergencyTypeVC" id="dFw-YR-wgU" customClass="EmergencyTypeVC" customModule="Ehelp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="seA-IC-0Vf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-Aa-9U6">
-                                <rect key="frame" x="16" y="189" width="288" height="190"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kYG-Aa-9U6">
+                                <rect key="frame" x="16" y="199" width="288" height="170"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exT-Dl-EQe">
                                         <rect key="frame" x="94.5" y="0.0" width="99" height="50"/>
@@ -135,7 +131,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-Lc-aK8">
-                                        <rect key="frame" x="66" y="70" width="156" height="50"/>
+                                        <rect key="frame" x="66" y="60" width="156" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KgQ-oD-xoF"/>
                                         </constraints>
@@ -147,7 +143,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHK-Mw-UdK">
-                                        <rect key="frame" x="64" y="140" width="160" height="50"/>
+                                        <rect key="frame" x="64" y="120" width="160" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="nZe-iU-INI"/>
                                         </constraints>
@@ -160,12 +156,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <switch opaque="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-nV-kJF">
+                                <rect key="frame" x="257" y="64" width="49" height="31"/>
+                                <connections>
+                                    <action selector="switchTapped:" destination="dFw-YR-wgU" eventType="valueChanged" id="OpD-pQ-utl"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FaceID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZp-03-hRu">
+                                <rect key="frame" x="196" y="69" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kYG-Aa-9U6" firstAttribute="trailing" secondItem="seA-IC-0Vf" secondAttribute="trailingMargin" id="1z8-S0-FWd"/>
+                            <constraint firstItem="Orh-jJ-99c" firstAttribute="trailing" secondItem="Kfe-nV-kJF" secondAttribute="trailing" constant="16" id="5fm-pY-Sur"/>
+                            <constraint firstItem="Kfe-nV-kJF" firstAttribute="top" secondItem="Orh-jJ-99c" secondAttribute="top" constant="20" id="Kph-3G-nah"/>
                             <constraint firstItem="kYG-Aa-9U6" firstAttribute="leading" secondItem="seA-IC-0Vf" secondAttribute="leadingMargin" id="NXY-3R-MaC"/>
                             <constraint firstItem="kYG-Aa-9U6" firstAttribute="centerY" secondItem="seA-IC-0Vf" secondAttribute="centerY" id="Wgc-Vu-IfU"/>
+                            <constraint firstItem="qZp-03-hRu" firstAttribute="top" secondItem="Orh-jJ-99c" secondAttribute="top" constant="25" id="jCT-Ip-a9s"/>
+                            <constraint firstItem="Kfe-nV-kJF" firstAttribute="leading" secondItem="qZp-03-hRu" secondAttribute="trailing" constant="8" id="zWw-Sp-WGV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Orh-jJ-99c"/>
                     </view>
@@ -178,6 +190,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="faceIdSwitch" destination="Kfe-nV-kJF" id="yjt-le-ltS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ksz-D7-lU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -5,4 +5,5 @@ class Global{
     static let shared = Global()
     var reports = [ReportViewModel]()
     var users   = [[String:AnyObject]]()
+    var faceId = false
 }
