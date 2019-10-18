@@ -48,9 +48,9 @@ import Foundation
 import UIKit
 
 struct ReportViewModel{
-    
+
+
     private var reportManager = ReportManager.sharedInstance
-//    var reports: [Report] =
 
     
     

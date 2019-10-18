@@ -449,10 +449,10 @@
                                 <exclude reference="M3J-tW-wzo"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="183-yP-ybc"/>
-                                <exclude reference="q4j-PG-zpn"/>
                                 <exclude reference="Aou-jJ-25q"/>
                                 <exclude reference="cKN-kS-eW8"/>
+                                <exclude reference="183-yP-ybc"/>
+                                <exclude reference="q4j-PG-zpn"/>
                                 <exclude reference="3fs-cf-kVD"/>
                                 <exclude reference="43u-8o-Ixu"/>
                                 <exclude reference="8Fy-La-y54"/>
@@ -664,6 +664,9 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="b0h-4J-ymo">
+                                <rect key="frame" x="150" y="284" width="20" height="20"/>
+                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDp-hy-eUv">
                                 <rect key="frame" x="22" y="12" width="318" height="28"/>
                                 <constraints>
@@ -716,6 +719,7 @@
                             <constraint firstItem="ChL-6J-ftz" firstAttribute="trailing" secondItem="NKW-2K-jeb" secondAttribute="trailing" constant="16" id="S3f-fb-hQG"/>
                             <constraint firstItem="NKW-2K-jeb" firstAttribute="leading" secondItem="ChL-6J-ftz" secondAttribute="leading" constant="16" id="S3j-Hj-1Ev"/>
                             <constraint firstItem="Sdg-VX-vDs" firstAttribute="leading" secondItem="TDp-hy-eUv" secondAttribute="trailing" constant="8" id="SCH-Tw-hzS"/>
+                            <constraint firstItem="b0h-4J-ymo" firstAttribute="centerX" secondItem="ChL-6J-ftz" secondAttribute="centerX" id="Ssy-Pk-cmD"/>
                             <constraint firstItem="Sdg-VX-vDs" firstAttribute="centerX" secondItem="ChL-6J-ftz" secondAttribute="centerX" id="TlK-ZK-Cet"/>
                             <constraint firstItem="KCk-55-hwF" firstAttribute="top" secondItem="Sdg-VX-vDs" secondAttribute="bottom" constant="8" id="ap7-Aj-LL3"/>
                             <constraint firstItem="TDp-hy-eUv" firstAttribute="firstBaseline" secondItem="Sdg-VX-vDs" secondAttribute="firstBaseline" id="eGV-Ji-hA2"/>
@@ -726,6 +730,7 @@
                             <constraint firstItem="HfX-Zf-lwI" firstAttribute="centerX" secondItem="ChL-6J-ftz" secondAttribute="centerX" id="mhf-Vc-18L"/>
                             <constraint firstItem="KCk-55-hwF" firstAttribute="centerX" secondItem="ChL-6J-ftz" secondAttribute="centerX" id="mrj-9v-NLd"/>
                             <constraint firstItem="ChL-6J-ftz" firstAttribute="trailing" secondItem="HfX-Zf-lwI" secondAttribute="trailing" constant="16" id="oTu-sC-0Rw"/>
+                            <constraint firstItem="b0h-4J-ymo" firstAttribute="centerY" secondItem="ChL-6J-ftz" secondAttribute="centerY" id="rYV-y4-FVe"/>
                             <constraint firstItem="ChL-6J-ftz" firstAttribute="bottom" secondItem="zwR-If-EQB" secondAttribute="bottom" constant="20" id="v8G-DJ-n6J"/>
                             <constraint firstItem="ChL-6J-ftz" firstAttribute="trailing" secondItem="Sdg-VX-vDs" secondAttribute="trailing" constant="16" id="vaL-aq-UYh"/>
                             <constraint firstItem="ChL-6J-ftz" firstAttribute="trailing" secondItem="zwR-If-EQB" secondAttribute="trailing" constant="20" id="wU5-eJ-MLH"/>
@@ -745,8 +750,6 @@
                                 <exclude reference="G40-5D-ssT"/>
                                 <exclude reference="Qhb-dX-I0A"/>
                                 <exclude reference="eGV-Ji-hA2"/>
-                                <exclude reference="3VC-XN-S4d"/>
-                                <exclude reference="S3j-Hj-1Ev"/>
                                 <exclude reference="5Bv-Or-ceb"/>
                                 <exclude reference="7zv-Gi-A1e"/>
                                 <exclude reference="CTY-zk-sDG"/>
@@ -757,6 +760,8 @@
                                 <exclude reference="vaL-aq-UYh"/>
                                 <exclude reference="wU5-eJ-MLH"/>
                                 <exclude reference="xrG-Oc-i3L"/>
+                                <exclude reference="3VC-XN-S4d"/>
+                                <exclude reference="S3j-Hj-1Ev"/>
                                 <exclude reference="4f0-KR-dOY"/>
                                 <exclude reference="AoC-tz-3g1"/>
                                 <exclude reference="BEy-j2-F0O"/>
@@ -809,14 +814,14 @@
                                 <include reference="NKW-2K-jeb"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3VC-XN-S4d"/>
-                                <include reference="S3j-Hj-1Ev"/>
                                 <include reference="CTY-zk-sDG"/>
                                 <include reference="IHV-1L-FeQ"/>
                                 <include reference="S3f-fb-hQG"/>
                                 <include reference="oTu-sC-0Rw"/>
                                 <include reference="vaL-aq-UYh"/>
                                 <include reference="xrG-Oc-i3L"/>
+                                <include reference="3VC-XN-S4d"/>
+                                <include reference="S3j-Hj-1Ev"/>
                                 <include reference="4f0-KR-dOY"/>
                                 <exclude reference="ePy-Yh-NTa"/>
                                 <include reference="mhf-Vc-18L"/>
@@ -833,6 +838,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="b0h-4J-ymo" id="zzr-Yg-ckN"/>
                         <outlet property="mapView" destination="HfX-Zf-lwI" id="e5g-MU-ejC"/>
                         <outlet property="message" destination="KCk-55-hwF" id="fji-63-NGr"/>
                     </connections>

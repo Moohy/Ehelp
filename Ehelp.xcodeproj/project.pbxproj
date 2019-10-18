@@ -22,6 +22,7 @@
 		1081B6752331C974000486AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6742331C974000486AB /* User.swift */; };
 		1081B6772331CEE1000486AB /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6762331CEE1000486AB /* SignupVC.swift */; };
 		1081B6792331D60D000486AB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6782331D60D000486AB /* LoginVC.swift */; };
+		10A564CB2359B20E0085791B /* ApiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A564CA2359B20E0085791B /* ApiViewModel.swift */; };
 		10BEC5012344C226009FE340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10BEC5002344C226009FE340 /* GoogleService-Info.plist */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
@@ -79,6 +80,7 @@
 		1081B6742331C974000486AB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1081B6762331CEE1000486AB /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		1081B6782331D60D000486AB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		10A564CA2359B20E0085791B /* ApiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewModel.swift; sourceTree = "<group>"; };
 		10BEC5002344C226009FE340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				1081B6782331D60D000486AB /* LoginVC.swift */,
 				10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */,
 				10EE8D282336860100BB44F2 /* UserViewModel.swift */,
+				10A564CA2359B20E0085791B /* ApiViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				1041717423224B4C006EE103 /* EmergencyType.swift in Sources */,
 				10F81819233F43E800AA782D /* TwilioApi.swift in Sources */,
 				10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */,
+				10A564CB2359B20E0085791B /* ApiViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

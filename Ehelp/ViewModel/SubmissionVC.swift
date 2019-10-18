@@ -6,9 +6,30 @@ import UIKit.UIAlertController
 import CoreData
 import Speech
 
-class SubmissionVC: UIViewController {
+//protocol ApiParams{
+//    func pass(reqBody: String)
+//}
+
+protocol ViewModelDelegate: class {
+    func willLoadData()
+    func didLoadData()
+}
+
+protocol ViewModelType {
+    func pass(reqBody: String)
+    var delegate: ViewModelDelegate? { get set }
+}
+
+class SubmissionVC: UIViewController, ViewModelDelegate {
+
+    
     
     var reportViewModel = ReportViewModel()
+    var apiViewModel = ApiViewModel()
+    
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     var emergencyType: String!
     
@@ -35,13 +56,14 @@ class SubmissionVC: UIViewController {
             self.mapView.removeAnnotations(allAnnotations)
             addAnnotation(location: locationOnMap)
         }
-        
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        apiViewModel.delegate = self
+        
         // add border to the description text view
         self.message.layer.borderColor = UIColor.lightGray.cgColor
         self.message.layer.borderWidth = 1
@@ -83,6 +105,14 @@ class SubmissionVC: UIViewController {
         locationLong = locValue.longitude
         
         currentLocation()
+    }
+    
+    func willLoadData() {
+        activityIndicator?.startAnimating()
+    }
+    
+    func didLoadData() {
+        activityIndicator?.stopAnimating()
     }
     
     /*
@@ -179,6 +209,10 @@ class SubmissionVC: UIViewController {
             
 //            coreDateCreation()
             reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
+            
+            let reqBody = "\(emergencyType) - \(message.text!) - Location: \(locationLat), \(locationLong)"
+            apiViewModel.pass(reqBody: reqBody)
+            print("hello from here")
             
 
             // append the reportViewModel to the singlton reports array of reportViewModel objects
