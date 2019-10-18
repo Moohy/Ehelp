@@ -23,6 +23,8 @@
 		1081B6772331CEE1000486AB /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6762331CEE1000486AB /* SignupVC.swift */; };
 		1081B6792331D60D000486AB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6782331D60D000486AB /* LoginVC.swift */; };
 		10A564CB2359B20E0085791B /* ApiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A564CA2359B20E0085791B /* ApiViewModel.swift */; };
+		10A564CD2359BBC30085791B /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A564CC2359BBC30085791B /* SettingViewModel.swift */; };
+		10A564CF2359BBD10085791B /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A564CE2359BBD10085791B /* SettingManager.swift */; };
 		10BEC5012344C226009FE340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10BEC5002344C226009FE340 /* GoogleService-Info.plist */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
@@ -81,6 +83,8 @@
 		1081B6762331CEE1000486AB /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		1081B6782331D60D000486AB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		10A564CA2359B20E0085791B /* ApiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiViewModel.swift; sourceTree = "<group>"; };
+		10A564CC2359BBC30085791B /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		10A564CE2359BBD10085791B /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		10BEC5002344C226009FE340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 				10EE8D2623366D0E00BB44F2 /* ReportViewModel.swift */,
 				10EE8D282336860100BB44F2 /* UserViewModel.swift */,
 				10A564CA2359B20E0085791B /* ApiViewModel.swift */,
+				10A564CC2359BBC30085791B /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				10EA3E4223471AFB006E8379 /* Ehelp.xcdatamodeld */,
 				10D87CB9235701FC0094595E /* ReportManager.swift */,
 				10206F50235715B600A95104 /* CurrentDate.swift */,
+				10A564CE2359BBD10085791B /* SettingManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
 				10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */,
 				10D87CB7235700FA0094595E /* Report+CoreDataProperties.swift in Sources */,
+				10A564CF2359BBD10085791B /* SettingManager.swift in Sources */,
 				106699482330ACA5004EEED7 /* SubmissionVC.swift in Sources */,
 				1081B6752331C974000486AB /* User.swift in Sources */,
 				10D87CB5235700FA0094595E /* Setting+CoreDataClass.swift in Sources */,
@@ -507,6 +514,7 @@
 				10EA3E4423471AFB006E8379 /* Ehelp.xcdatamodeld in Sources */,
 				10D87CBA235701FC0094595E /* ReportManager.swift in Sources */,
 				10EE8D292336860100BB44F2 /* UserViewModel.swift in Sources */,
+				10A564CD2359BBC30085791B /* SettingViewModel.swift in Sources */,
 				10417143231D0692006EE103 /* AppDelegate.swift in Sources */,
 				10206F51235715B600A95104 /* CurrentDate.swift in Sources */,
 				10D87CB8235700FA0094595E /* Setting+CoreDataProperties.swift in Sources */,

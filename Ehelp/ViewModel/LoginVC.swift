@@ -9,7 +9,9 @@ class LoginVC: UIViewController {
     var fetchedData: [NSManagedObject]?
     
 //    let nextVC = EmergencyTypeVC()
-    var aaa:Bool?
+    var settings: [Setting]?
+    let settingViewModel = SettingViewModel()
+    
     
     
     private var userViewModel = UserViewModel()
@@ -26,7 +28,6 @@ class LoginVC: UIViewController {
         if Auth.auth().currentUser != nil {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
             self.present(nextVC, animated: true, completion: nil)
-            print("imhere")
         }
         email.text = ""
         password.text = ""
@@ -86,7 +87,6 @@ class LoginVC: UIViewController {
     
     func setupFetchedResultsController() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-
         
         let managedContext =
           appDelegate.persistentContainer.viewContext
@@ -144,34 +144,13 @@ class LoginVC: UIViewController {
         email.text = ""
         password.text = ""
         
-       setupFetchedResultsController()
-        let myBool: Bool
-        if fetchedData?.count ?? 0 > 0 {
-            myBool = (fetchedData![0].value(forKey: "faceId") != nil)
-        } else {
-            myBool = false
-            aaa = false
-        }
+//       setupFetchedResultsController()
+        settings = settingViewModel.getSettings()
+        let faceId = settings![0].value(forKey: "faceId") as! Bool
 
-        if (myBool) {
-//            let nextVC = EmergencyTypeVC()
-////            print(nextVC.faceIdSwitch.isOn)
-//            guard let fswitch = nextVC.faceIdSwitch else{return}
-//////            var s = nextVC.viewWithTag(10) as? UIButton
-////
-//////            var s = nextVC.uiswitch as? UISwitch
-////
-//            fswitch.setOn(true, animated: true)
-////            print(nextVC.faceIdSwitch.isOn)
-//
-//            aaa = true
-//            print(nextVC.bool)
-//            nextVC.bool = true
-            Global.shared.faceId = true
+        if (faceId) {
             handleFaceId()
         }
-        
-//        setupUser()
     }
     
     func setupUser() {

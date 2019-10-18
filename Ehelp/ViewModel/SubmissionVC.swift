@@ -6,9 +6,6 @@ import UIKit.UIAlertController
 import CoreData
 import Speech
 
-//protocol ApiParams{
-//    func pass(reqBody: String)
-//}
 
 protocol ViewModelDelegate: class {
     func willLoadData()
@@ -210,7 +207,7 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
 //            coreDateCreation()
             reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
             
-            let reqBody = "\(emergencyType) - \(message.text!) - Location: \(locationLat), \(locationLong)"
+            let reqBody = "\(emergencyType!) - \(message.text!) - Location: \(locationLat), \(locationLong)"
             apiViewModel.pass(reqBody: reqBody)
             print("hello from here")
             

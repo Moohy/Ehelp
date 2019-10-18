@@ -41,12 +41,6 @@ class ReportManager{
     }
     func deleteReport(date: String){
         
-//        //As we know that container is set up in the AppDelegates so we need to refer that container.
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//
-//        //We need to create a context from this container
-//        let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Report")
         fetchRequest.predicate = NSPredicate(format: "date = %@", date)
         

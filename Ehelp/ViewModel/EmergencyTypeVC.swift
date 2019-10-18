@@ -7,13 +7,10 @@ class EmergencyTypeVC: UIViewController {
     
     private var reportViewModel = ReportViewModel()
     
+    var settings: [Setting]?
+    private var settingViemModel = SettingViewModel()
+    
     var fetchedData: [NSManagedObject]?
-    
-    var faceId: Bool{
-        return Global.shared.faceId
-    }
-    
-    var bool:Bool?
 
     @IBOutlet weak var faceIdSwitch: UISwitch!
     
@@ -27,7 +24,9 @@ class EmergencyTypeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 //        let prevVC = LoginVC()
-        print(faceId)
+//        print(faceId)
+        settings = settingViemModel.getSettings()
+        let faceId = settings![0].value(forKey: "faceId") as! Bool
         faceIdSwitch.setOn(faceId, animated: true)
     }
     
@@ -89,70 +88,69 @@ class EmergencyTypeVC: UIViewController {
     
     @IBAction func switchTapped(_ sender: Any) {
         if faceIdSwitch.isOn{
-            faceIdCoreDateSetting(value: true)
+            settingViemModel.updateFaceid(bool: true)
         }
         else{
-            faceIdCoreDateSetting(value: false)
-            Global.shared.faceId = false
+            settingViemModel.updateFaceid(bool: false)
         }
         
-        UserDefaults.standard.set((sender as AnyObject).isOn, forKey: "switchState")
+//        UserDefaults.standard.set((sender as AnyObject).isOn, forKey: "switchState")
     }
     
-    func setupFetchedResultsController() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-
-        
-        let managedContext =
-          appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest =
-          NSFetchRequest<NSManagedObject>(entityName: "Setting")
-        
-        //3
-        do {
-          fetchedData = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
+//    func setupFetchedResultsController() {
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+//
+//
+//        let managedContext =
+//          appDelegate.persistentContainer.viewContext
+//
+//        //2
+//        let fetchRequest =
+//          NSFetchRequest<NSManagedObject>(entityName: "Setting")
+//
+//        //3
+//        do {
+//          fetchedData = try managedContext.fetch(fetchRequest)
+//        } catch let error as NSError {
+//          print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//    }
 
     
-    func faceIdCoreDateSetting(value: Bool){
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-            
-    //        let context = appDelegate.persistentContainer.viewContext
-    //
-    //        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
-    //        let newReport = NSManagedObject(entity: entity!, insertInto: context)
-    //
-            
-
-            // 1
-            let managedContext =
-              appDelegate.persistentContainer.viewContext
-            
-            // 2
-            let entity =
-              NSEntityDescription.entity(forEntityName: "Setting",
-                                         in: managedContext)!
-            
-            let faceid = NSManagedObject(entity: entity,
-                                         insertInto: managedContext)
-            
-            faceid.setValue(value, forKey: "faceId")
-
-            
-            do {
-               try managedContext.save()
-              } catch {
-               print("Failed saving")
-            }
-            
-            
-        }
-    
+//    func faceIdCoreDateSetting(value: Bool){
+//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+//
+//    //        let context = appDelegate.persistentContainer.viewContext
+//    //
+//    //        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
+//    //        let newReport = NSManagedObject(entity: entity!, insertInto: context)
+//    //
+//
+//
+//            // 1
+//            let managedContext =
+//              appDelegate.persistentContainer.viewContext
+//
+//            // 2
+//            let entity =
+//              NSEntityDescription.entity(forEntityName: "Setting",
+//                                         in: managedContext)!
+//
+//            let faceid = NSManagedObject(entity: entity,
+//                                         insertInto: managedContext)
+//
+//            faceid.setValue(value, forKey: "faceId")
+//
+//
+//            do {
+//               try managedContext.save()
+//              } catch {
+//               print("Failed saving")
+//            }
+//
+//
+//        }
+//
     /*
      *
      * sets up the reportViewModel and
