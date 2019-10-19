@@ -7,44 +7,18 @@ class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     var viewModel = ReportViewModel()
     var reports: [Report]!
     
-    
-    var reportViewModel : [ReportViewModel]? {
-        return Global.shared.reports
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Reports"
         
         reports = viewModel.getReports()
-        
-//        setupFetchedResultsController()
-        
+
         // reloads each time the view will appear
         self.tableView.reloadData()
         
         
     }
     
-//    func setupFetchedResultsController() {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-//
-//
-//        let managedContext =
-//          appDelegate.persistentContainer.viewContext
-//
-//        //2
-//        let fetchRequest =
-//          NSFetchRequest<NSManagedObject>(entityName: "Report")
-//
-//        //3
-//        do {
-//          reports = try managedContext.fetch(fetchRequest)
-//        } catch let error as NSError {
-//          print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//    }
-//
     @IBAction func signoutButton(_ sender: Any) {
         do {
                try Auth.auth().signOut()
@@ -102,7 +76,7 @@ class ProfileTableVC: UITableViewController, NSFetchedResultsControllerDelegate 
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            // handle delete (by removing the data from your array and updating the tableview)
+            // handle delete (by removing the data from core data array and updating the tableview)
             viewModel.deleteReport(date: reports[indexPath.row].value(forKey:"date") as! String)
             reports.remove(at: indexPath.row)
             

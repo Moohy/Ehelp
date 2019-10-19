@@ -18,15 +18,11 @@ protocol ViewModelType {
 }
 
 class SubmissionVC: UIViewController, ViewModelDelegate {
-
-    
     
     var reportViewModel = ReportViewModel()
     var apiViewModel = ApiViewModel()
     
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     
     var emergencyType: String!
     
@@ -192,29 +188,12 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         } else {
-            // Add message after validation
-//            reportViewModel.addMessage(msg: message.text)
-            
-            
-            // api goes here
-//            TwilioApi.sendSMS(with: reportViewModel) {(result, error) in
-//                if let error = error {
-//                    self.alert(title: "Error", message: error.localizedDescription)
-//                }
-//                
-//            }
-            
-//            coreDateCreation()
             reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
             
             let reqBody = "\(emergencyType!) - \(message.text!) - Location: \(locationLat), \(locationLong)"
-            apiViewModel.pass(reqBody: reqBody)
-            print("hello from here")
             
-
-            // append the reportViewModel to the singlton reports array of reportViewModel objects
-            // to be retrieved globally on the app when ever intialized
-            Global.shared.reports.append(reportViewModel)
+            // api call
+            apiViewModel.pass(reqBody: reqBody)
         }
         
         
@@ -230,45 +209,6 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
-    
-//    func coreDateCreation(){
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-//        
-////        let context = appDelegate.persistentContainer.viewContext
-////
-////        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
-////        let newReport = NSManagedObject(entity: entity!, insertInto: context)
-////
-//        
-//
-//        // 1
-//        let managedContext =
-//          appDelegate.persistentContainer.viewContext
-//        
-//        // 2
-//        let entity =
-//          NSEntityDescription.entity(forEntityName: "Reports",
-//                                     in: managedContext)!
-//        
-//        let newReport = NSManagedObject(entity: entity,
-//                                     insertInto: managedContext)
-//        
-//        
-//        
-//        newReport.setValue(emergencyType, forKey: "emergencyType")
-//        newReport.setValue(message.text!, forKey: "message")
-//        newReport.setValue(locationLat, forKey: "latitude")
-//        newReport.setValue(locationLong, forKey: "longitude")
-//        
-//        
-//        do {
-//           try managedContext.save()
-//          } catch {
-//           print("Failed saving")
-//        }
-//        
-//        
-//    }
 }
 
 

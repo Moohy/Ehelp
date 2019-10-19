@@ -1,11 +1,3 @@
-//
-//  ApiViewModel.swift
-//  Ehelp
-//
-//  Created by Mohammed on 18/10/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import Foundation
 
 class ApiViewModel: ViewModelType{

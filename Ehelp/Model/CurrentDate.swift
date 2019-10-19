@@ -1,26 +1,17 @@
-//
-//  Date.swift
-//  Ehelp
-//
-//  Created by Mohammed on 16/10/19.
-//  Copyright © 2019 Mohammed. All rights reserved.
-//
-
 import Foundation
 
+// current date model
 struct CurrentDate {
-//
-//    var currentDate: String!
     
-    init(){
-//        setDate()
-    }
-
-    
+    // set date function to set the current date
     func setDate() -> String{
+        // call Date object
         let date = Date()
+        // call date formatter object
         let formatter = DateFormatter()
+        // set the desired format
         formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        // return the current date in the desired format
         return formatter.string(from: date)
         
     }

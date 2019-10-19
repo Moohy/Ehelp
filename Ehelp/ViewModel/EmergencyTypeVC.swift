@@ -65,23 +65,17 @@ class EmergencyTypeVC: UIViewController {
     }
     
     @IBAction func police(_ sender: Any) {
-        //choose emergency from emergency enum "police"
-//        reportViewModel.addEmergency(type: Emergency.police)
-        
-        
-
-        
         //call next view controller
         nextView(emergencyType: Emergency.police.rawValue )
     }
     
     @IBAction func fireFighter(_ sender: Any) {
-        //choose emergency from emergency enum "firefighter"
+        //call next view controller
         nextView(emergencyType: Emergency.fireFighter.rawValue )
     }
     
     @IBAction func ambulance(_ sender: Any) {
-//        reportViewModel.addEmergency(type: Emergency.ambulance)
+        //call next view controller
         nextView(emergencyType: Emergency.ambulance.rawValue )
     }
     
@@ -93,64 +87,8 @@ class EmergencyTypeVC: UIViewController {
         else{
             settingViemModel.updateFaceid(bool: false)
         }
-        
-//        UserDefaults.standard.set((sender as AnyObject).isOn, forKey: "switchState")
     }
     
-//    func setupFetchedResultsController() {
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-//
-//
-//        let managedContext =
-//          appDelegate.persistentContainer.viewContext
-//
-//        //2
-//        let fetchRequest =
-//          NSFetchRequest<NSManagedObject>(entityName: "Setting")
-//
-//        //3
-//        do {
-//          fetchedData = try managedContext.fetch(fetchRequest)
-//        } catch let error as NSError {
-//          print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//    }
-
-    
-//    func faceIdCoreDateSetting(value: Bool){
-//            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-//
-//    //        let context = appDelegate.persistentContainer.viewContext
-//    //
-//    //        let entity = NSEntityDescription.entity(forEntityName: "Reports", in: context)
-//    //        let newReport = NSManagedObject(entity: entity!, insertInto: context)
-//    //
-//
-//
-//            // 1
-//            let managedContext =
-//              appDelegate.persistentContainer.viewContext
-//
-//            // 2
-//            let entity =
-//              NSEntityDescription.entity(forEntityName: "Setting",
-//                                         in: managedContext)!
-//
-//            let faceid = NSManagedObject(entity: entity,
-//                                         insertInto: managedContext)
-//
-//            faceid.setValue(value, forKey: "faceId")
-//
-//
-//            do {
-//               try managedContext.save()
-//              } catch {
-//               print("Failed saving")
-//            }
-//
-//
-//        }
-//
     /*
      *
      * sets up the reportViewModel and
@@ -160,8 +98,7 @@ class EmergencyTypeVC: UIViewController {
     func nextView(emergencyType: String){
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "Submission") as! SubmissionVC
         
-        //pass view model to the instance of viewmodel on the next view controller
-//        nextVC.reportViewModel = reportViewModel
+        // pass emergency type to submission
         nextVC.emergencyType = emergencyType
         
         //push and persent

@@ -166,7 +166,6 @@
 				10417142231D0692006EE103 /* AppDelegate.swift */,
 				10417149231D0695006EE103 /* Assets.xcassets */,
 				1041714E231D0695006EE103 /* Info.plist */,
-				10F81818233F43E800AA782D /* TwilioApi.swift */,
 				10BEC5002344C226009FE340 /* GoogleService-Info.plist */,
 			);
 			path = Ehelp;
@@ -222,6 +221,7 @@
 				10D87CB9235701FC0094595E /* ReportManager.swift */,
 				10206F50235715B600A95104 /* CurrentDate.swift */,
 				10A564CE2359BBD10085791B /* SettingManager.swift */,
+				10F81818233F43E800AA782D /* TwilioApi.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
