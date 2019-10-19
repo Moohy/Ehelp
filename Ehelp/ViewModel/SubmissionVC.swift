@@ -8,8 +8,9 @@ import Speech
 
 
 protocol ViewModelDelegate: class {
-    func willLoadData()
-    func didLoadData()
+//    func willLoadData()
+    func pass1(reqBody: String)
+//    var delegate: ViewModelType? { get set }
 }
 
 protocol ViewModelType {
@@ -18,6 +19,12 @@ protocol ViewModelType {
 }
 
 class SubmissionVC: UIViewController, ViewModelDelegate {
+    func pass1(reqBody: String) {
+        
+    }
+    
+//    var delegate: ViewModelType?
+    
     
     var reportViewModel = ReportViewModel()
     var apiViewModel = ApiViewModel()
