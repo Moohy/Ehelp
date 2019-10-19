@@ -1,12 +1,24 @@
 import Foundation
 
-class ApiViewModel: ViewModelType{
+class ApiViewModel{
     private var api = TwilioApi.sharedInstance
     
-    var delegate: ViewModelDelegate?
+    var delegate: ViewModelDelegate?{
+        get{
+            return api.delegate
+        }
+        set (value)
+        {
+            api.delegate = value
+        }
+    }
     
-    func pass(reqBody: String) {
+//    var delegate: ViewModelDelegate?
+    
+    func sendSMS(reqBody: String) {
         api.sendReport(with: reqBody)
     }
+    
+    
 
 }
