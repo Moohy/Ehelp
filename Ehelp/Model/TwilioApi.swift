@@ -5,6 +5,8 @@ import UIKit
 class TwilioApi
 {
     let session = URLSession.shared
+    
+    var delegate: ViewModelDelegate?
 
     func sendReport(with body: String)
     {
@@ -21,24 +23,51 @@ class TwilioApi
             request.httpMethod = "POST"
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpBody = NSMutableData(data: "From=\(from)&To=\(to)&Body=\(message)".data(using: .utf8)!) as Data
-            sendSMS(request, element: "results")
+            sendSMS(request)
         }
     }
     
-    private func sendSMS(_ request: URLRequest, element: String)
+    private func sendSMS(_ request: URLRequest)
     {
+        self.delegate?.willLoadData()
+        
         let task = session.dataTask(with: request, completionHandler: {
             data, response, downloadError in
             
             if downloadError != nil {
                 print(downloadError)
+                DispatchQueue.main.async(execute:{
+                    self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!")
+                })
             }
             if let data = data, let responseDetails = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                // Success
-                print("Response: \(responseDetails)")
+                var parsedResult: Any! = nil
+                do
+                {
+                    parsedResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                }
+                catch{
+                    print()
+                }
                 
-            }
+                let result = parsedResult as! [String:Any]
+                
+                print(result)
 
+                if let code = result["code"] {
+                    // unsuccessful submission
+                    DispatchQueue.main.async(execute:{
+                        self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!")
+                    })
+                } else {
+                    // successful submission
+                    print("Response: \(responseDetails)")
+                    DispatchQueue.main.async(execute:{
+                        
+                        self.delegate?.didLoadData(title: "Seccussfull Submission", message: "Report has been filed successfully")
+                    })
+                }
+            }
         })
         task.resume()
         

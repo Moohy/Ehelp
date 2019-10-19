@@ -7,24 +7,17 @@ import CoreData
 import Speech
 
 
-protocol ViewModelDelegate: class {
-//    func willLoadData()
-    func pass1(reqBody: String)
-//    var delegate: ViewModelType? { get set }
+protocol ViewModelDelegate {
+    func willLoadData()
+    func didLoadData(title: String, message: String)
 }
 
 protocol ViewModelType {
     func pass(reqBody: String)
-    var delegate: ViewModelDelegate? { get set }
+//    var delegate: ViewModelDelegate? { get set }
 }
 
 class SubmissionVC: UIViewController, ViewModelDelegate {
-    func pass1(reqBody: String) {
-        
-    }
-    
-//    var delegate: ViewModelType?
-    
     
     var reportViewModel = ReportViewModel()
     var apiViewModel = ApiViewModel()
@@ -105,14 +98,18 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         locationLong = locValue.longitude
         
         currentLocation()
+        
+//        activityIndicator.hidesWhenStopped = true
     }
     
     func willLoadData() {
         activityIndicator?.startAnimating()
     }
     
-    func didLoadData() {
+    func didLoadData(title: String, message: String) {
+        sleep(3)
         activityIndicator?.stopAnimating()
+        alert(title: title, message: message)
     }
     
     /*
@@ -200,21 +197,8 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
             let reqBody = "\(emergencyType!) - \(message.text!) - Location: \(locationLat), \(locationLong)"
             
             // api call
-            apiViewModel.pass(reqBody: reqBody)
+            apiViewModel.sendSMS(reqBody: reqBody)
         }
-        
-        
-        // show message if criteria are met
-        let alertController:UIAlertController = UIAlertController(title: "Message", message: "Report has been filed successfully", preferredStyle: UIAlertController.Style.alert)
-        
-        let alertAction = UIAlertAction(title: "Back", style: .cancel, handler:
-        { action in
-            // pop this view controller and go back to root view controller
-            self.navigationController?.popToRootViewController(animated: true)
-        } )
-        
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
     }
 }
 

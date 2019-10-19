@@ -3,7 +3,7 @@ import Foundation
 import MapKit
 
 
-// emergency types model
+// emergency types enum
 enum Emergency: String {
     // define emergency types
     case    police = "Police",
