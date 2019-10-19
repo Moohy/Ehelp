@@ -3,32 +3,36 @@ import FirebaseAuth
 import LocalAuthentication
 import CoreData
 
-
+// login view contoller
 class LoginVC: UIViewController {
     
+    // fetch data array from the core data
     var fetchedData: [NSManagedObject]?
     
 //    let nextVC = EmergencyTypeVC()
     var settings: [Setting]?
+    // initialize setting view model
     let settingViewModel = SettingViewModel()
-    
-    
-    
+    // initialize user view model
     private var userViewModel = UserViewModel()
     
-    var userGlobal : [[String:AnyObject]]! {
-        return Global.shared.users
-    }
+//    var userGlobal : [[String:AnyObject]]! {
+//        return Global.shared.users
+//    }
     
+    // initialize login variables
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
     
+    // load view model function, triggers when scene is loaded
     override func viewDidLoad() {
-        if Auth.auth().currentUser != nil {
-            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-            self.present(nextVC, animated: true, completion: nil)
-        }
+//        if Auth.auth().currentUser != nil {
+//            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
+//            self.present(nextVC, animated: true, completion: nil)
+//        }
+        
+        // clear text fields
         email.text = ""
         password.text = ""
         
@@ -69,21 +73,22 @@ class LoginVC: UIViewController {
 //    }
 
     
-    func textFieldDidBeginEditing(textField: UITextField!)
-    {
-//        activeField = textField
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField!)
-    {
-//        activeField = nil
-    }
+//    func textFieldDidBeginEditing(textField: UITextField!)
+//    {
+////        activeField = textField
+//    }
+//
+//    func textFieldDidEndEditing(textField: UITextField!)
+//    {
+////        activeField = nil
+//    }
 
     
     /*
      
     face Id code starts here
      */
+    
     
     func setupFetchedResultsController() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
@@ -116,14 +121,7 @@ class LoginVC: UIViewController {
                                             self.present(nextVC, animated: true, completion: nil)
                     }
                    
-                } else {
-                    let alertController:UIAlertController = UIAlertController(title: "Incoreect Credentials", message: "Please try again", preferredStyle: UIAlertController.Style.alert)
-                    
-                    let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
-                    alertController.addAction(alertAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
+                } 
             }
         } else {
             let alertController:UIAlertController = UIAlertController(title: "FaceId not configured", message: "Please go to settings", preferredStyle: UIAlertController.Style.alert)
@@ -190,14 +188,14 @@ class LoginVC: UIViewController {
      * based on the user model check user email and password in order to login
      *
      */
-    func validateUser() -> Bool {
-        if let index = userGlobal!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
-            if(userGlobal![index]["password"] as! String == password.text! ){
-                return true
-            }
-        }
-        return false
-    }
+//    func validateUser() -> Bool {
+//        if let index = userGlobal!.firstIndex(where: { (($0["email"] ?? "" as AnyObject) as! String) == email.text! }) {
+//            if(userGlobal![index]["password"] as! String == password.text! ){
+//                return true
+//            }
+//        }
+//        return false
+//    }
     
     /*
      *
