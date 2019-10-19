@@ -11,11 +11,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ehelp/ViewModel/SignupVC.swift"
-            timestampString = "593086661.073718"
+            timestampString = "593173540.125262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,8 +58,13 @@
                   symbolName = "Ehelp.Global.deinit"
                   moduleName = "Ehelp"
                   usesParentBreakpointCondition = "Yes"
+<<<<<<< HEAD
                   urlString = "file:///Users/mohammed/Documents/RMIT/2019_2/iphone/Ehelp/Ehelp/Model/Global.swift"
                   timestampString = "593173736.584487"
+=======
+                  urlString = "file:///Users/mohammed/Desktop/RMIT1950/COSC2472-iPhone-Software-Engineering/assignments/Ehelp/Ehelp/Model/Global.swift"
+                  timestampString = "593173540.358586"
+>>>>>>> a1feea4b74d155bfaf980d17b33209d6146b3b25
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -73,8 +78,13 @@
                   symbolName = "Ehelp.Global.__deallocating_deinit"
                   moduleName = "Ehelp"
                   usesParentBreakpointCondition = "Yes"
+<<<<<<< HEAD
                   urlString = "file:///Users/mohammed/Documents/RMIT/2019_2/iphone/Ehelp/Ehelp/Model/Global.swift"
                   timestampString = "593173736.586262"
+=======
+                  urlString = "file:///Users/mohammed/Desktop/RMIT1950/COSC2472-iPhone-Software-Engineering/assignments/Ehelp/Ehelp/Model/Global.swift"
+                  timestampString = "593173540.360108"
+>>>>>>> a1feea4b74d155bfaf980d17b33209d6146b3b25
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
