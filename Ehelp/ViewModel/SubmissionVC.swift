@@ -33,27 +33,9 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
     
     @IBOutlet var mapView: MKMapView!
     
-    
-    /*
-     *
-     *long press will drop a pin on the pressed location on the map
-     *
-     */
-    @IBAction func gesRec(_ sender: Any) {
-        
-        if (sender as AnyObject).state == .began {
-            let locationInView = (sender as AnyObject).location(in: mapView)
-            let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
-            let allAnnotations = self.mapView.annotations
-            self.mapView.removeAnnotations(allAnnotations)
-            addAnnotation(location: locationOnMap)
-        }
-    }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         apiViewModel.delegate = self
         
         // add border to the description text view
@@ -64,10 +46,10 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         self.locationManager.requestAlwaysAuthorization()
-
+        
         // For use in foreground
         self.locationManager.requestWhenInUseAuthorization()
-
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -83,7 +65,7 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         if let coor = mapView.userLocation.location?.coordinate{
             mapView.setCenter(coor, animated: true)
         }
-
+        
         mapView.mapType = MKMapType.standard
         
         guard let locValue: CLLocationCoordinate2D = locationManager.location?.coordinate else { return }
@@ -92,6 +74,23 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         locationLong = locValue.longitude
         
         currentLocation()
+    }
+    
+    
+    /*
+     *
+     *long press will drop a pin on the pressed location on the map
+     *
+     */
+    @IBAction func gesRec(_ sender: Any) {
+        
+        if (sender as AnyObject).state == .began {
+            let locationInView = (sender as AnyObject).location(in: mapView)
+            let locationOnMap = mapView.convert(locationInView, toCoordinateFrom: mapView)
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
+            addAnnotation(location: locationOnMap)
+        }
     }
     
     func willLoadData() {
@@ -154,7 +153,7 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute:{
                 if self.successfulSubmission{
-                    self.reportViewModel.addReport( emergencyType: self.emergencyType, message: self.message.text!, langitude: self.locationLong, latitude: self.locationLat)
+                    self.reportViewModel.addReport( emergencyType: self.emergencyType, message: self.message.text!, longitude: self.locationLong, latitude: self.locationLat)
                 }
             })
         }

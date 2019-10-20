@@ -17,7 +17,6 @@
 		10417158231D0695006EE103 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417157231D0695006EE103 /* UserTests.swift */; };
 		10417163231D0695006EE103 /* EhelpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417162231D0695006EE103 /* EhelpUITests.swift */; };
 		1041717423224B4C006EE103 /* EmergencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717323224B4C006EE103 /* EmergencyType.swift */; };
-		1041717623225028006EE103 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717523225028006EE103 /* Global.swift */; };
 		106699482330ACA5004EEED7 /* SubmissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106699472330ACA5004EEED7 /* SubmissionVC.swift */; };
 		1081B6752331C974000486AB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6742331C974000486AB /* User.swift */; };
 		1081B6772331CEE1000486AB /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1081B6762331CEE1000486AB /* SignupVC.swift */; };
@@ -29,6 +28,7 @@
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
 		10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */; };
+		10C7DCB2235C2EE1005CA2A3 /* SettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */; };
 		10D87CB5235700FA0094595E /* Setting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */; };
 		10D87CB6235700FA0094595E /* Report+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB2235700F90094595E /* Report+CoreDataClass.swift */; };
 		10D87CB7235700FA0094595E /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */; };
@@ -78,7 +78,6 @@
 		10417162231D0695006EE103 /* EhelpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EhelpUITests.swift; sourceTree = "<group>"; };
 		10417164231D0695006EE103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1041717323224B4C006EE103 /* EmergencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyType.swift; sourceTree = "<group>"; };
-		1041717523225028006EE103 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		106699472330ACA5004EEED7 /* SubmissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionVC.swift; sourceTree = "<group>"; };
 		1081B6742331C974000486AB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1081B6762331CEE1000486AB /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 		10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
+		10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTests.swift; sourceTree = "<group>"; };
 		10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataProperties.swift"; path = "Ehelp/Model/Report+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB2235700F90094595E /* Report+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataClass.swift"; path = "Ehelp/Model/Report+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Setting+CoreDataClass.swift"; path = "Ehelp/Model/Setting+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -178,6 +178,7 @@
 			children = (
 				10417157231D0695006EE103 /* UserTests.swift */,
 				10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */,
+				10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */,
 				10417159231D0695006EE103 /* Info.plist */,
 			);
 			path = EhelpTests;
@@ -218,7 +219,6 @@
 				10D87CB2235700F90094595E /* Report+CoreDataClass.swift */,
 				10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */,
 				1041717323224B4C006EE103 /* EmergencyType.swift */,
-				1041717523225028006EE103 /* Global.swift */,
 				1081B6742331C974000486AB /* User.swift */,
 				10EA3E4223471AFB006E8379 /* Ehelp.xcdatamodeld */,
 				10D87CB9235701FC0094595E /* ReportManager.swift */,
@@ -504,7 +504,6 @@
 				10EE8D2723366D0E00BB44F2 /* ReportViewModel.swift in Sources */,
 				10D87CB6235700FA0094595E /* Report+CoreDataClass.swift in Sources */,
 				1081B6792331D60D000486AB /* LoginVC.swift in Sources */,
-				1041717623225028006EE103 /* Global.swift in Sources */,
 				10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */,
 				10417145231D0692006EE103 /* EmergencyTypeVC.swift in Sources */,
 				10413B64232657E10006AE88 /* TableCellReportDetailsVC.swift in Sources */,
@@ -534,6 +533,7 @@
 			files = (
 				10417158231D0695006EE103 /* UserTests.swift in Sources */,
 				10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */,
+				10C7DCB2235C2EE1005CA2A3 /* SettingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,8 @@ struct ReportViewModel{
     private var reportManager = ReportManager.sharedInstance
 
     // add report to the report core data
-    mutating func addReport( emergencyType: String, message: String, langitude: Double, latitude: Double){
-        reportManager.addReport(emergencyType: emergencyType, message: message, langitude: langitude, latitude: latitude)
+    mutating func addReport( emergencyType: String, message: String, longitude: Double, latitude: Double){
+        reportManager.addReport(emergencyType: emergencyType, message: message, longitude: longitude, latitude: latitude)
         print()
     }
     
