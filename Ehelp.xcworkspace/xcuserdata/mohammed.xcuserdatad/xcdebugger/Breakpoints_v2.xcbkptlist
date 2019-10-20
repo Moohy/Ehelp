@@ -34,38 +34,6 @@
             endingLineNumber = "3"
             landmarkName = "Global"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ehelp.Global.deinit"
-                  moduleName = "Ehelp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammed/Documents/RMIT/2019_2/iphone/Ehelp/Ehelp/Model/Global.swift"
-                  timestampString = "593257125.59442"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Ehelp.Global.__deallocating_deinit"
-                  moduleName = "Ehelp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mohammed/Documents/RMIT/2019_2/iphone/Ehelp/Ehelp/Model/Global.swift"
-                  timestampString = "593257125.596613"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

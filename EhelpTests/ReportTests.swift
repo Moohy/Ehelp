@@ -127,12 +127,12 @@ class ReportTests: XCTestCase {
         // call delete report function to delete report
         deleteReport()
 
-        // test if added report message is equal the message we initialized above
-        XCTAssertFalse(reportViewModel.getReports().last?.message == message)
-        // test if added report langitude is equal the langitude we initialized above
-        XCTAssertFalse(reportViewModel.getReports().last?.longitude == longitude)
-        // test if added report latitude is equal the latitude we initialized above
-        XCTAssertFalse(reportViewModel.getReports().last?.latitude == latitude)
+        // test if the data in the core data doesn't equal the message
+        XCTAssertFalse(reportViewModel.getReports().last?.message == "message")
+        // test if the data in the core data doesn't equal the longtitude
+        XCTAssertFalse(reportViewModel.getReports().last?.longitude == 000000)
+        // test if the data in the core data doesn't equal the latitude
+        XCTAssertFalse(reportViewModel.getReports().last?.latitude == 000000)
         
         addReport()
         
