@@ -1,10 +1,7 @@
 import Foundation
 
-//codable will help if planning to encode info
-//to json inorder to use them for an online service backend
-
 // user model
-struct User: Codable {
+struct User {
     // define users' attributes
     private var email:          String!
     private var password:       String!

@@ -10,6 +10,7 @@ class TwilioApi
 
     func sendReport(with body: String)
     {
+        // api configiration
         let SID = "AC58a35a6192706ebdf5900cd64653550a"
         let secret = "f38d7fa46d4470061be7d13276e599f5"
         let from = "+12055259360"
@@ -35,9 +36,9 @@ class TwilioApi
             data, response, downloadError in
             
             if downloadError != nil {
-                print(downloadError)
+                // unsuccessful submission
                 DispatchQueue.main.async(execute:{
-                    self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!")
+                    self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!", isSuccessful: false)
                 })
             }
             if let data = data, let responseDetails = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
@@ -47,24 +48,19 @@ class TwilioApi
                     parsedResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
                 }
                 catch{
-                    print()
                 }
                 
                 let result = parsedResult as! [String:Any]
-                
-                print(result)
 
                 if let code = result["code"] {
                     // unsuccessful submission
                     DispatchQueue.main.async(execute:{
-                        self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!")
+                        self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!", isSuccessful: false)
                     })
                 } else {
                     // successful submission
-                    print("Response: \(responseDetails)")
                     DispatchQueue.main.async(execute:{
-                        
-                        self.delegate?.didLoadData(title: "Seccussfull Submission", message: "Report has been filed successfully")
+                        self.delegate?.didLoadData(title: "Seccussfull Submission", message: "Report has been filed successfully", isSuccessful: true)
                     })
                 }
             }
@@ -72,13 +68,11 @@ class TwilioApi
         task.resume()
         
     }
-
     
     static let sharedInstance = TwilioApi()
     private init(){
 
         let session = URLSession.shared
     }
-    
 }
 

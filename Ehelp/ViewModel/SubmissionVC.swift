@@ -9,12 +9,7 @@ import Speech
 
 protocol ViewModelDelegate {
     func willLoadData()
-    func didLoadData(title: String, message: String)
-}
-
-protocol ViewModelType {
-    func pass(reqBody: String)
-//    var delegate: ViewModelDelegate? { get set }
+    func didLoadData(title: String, message: String, isSuccessful: Bool)
 }
 
 class SubmissionVC: UIViewController, ViewModelDelegate {
@@ -24,13 +19,17 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var emergencyType: String!
+
     
     @IBOutlet weak var message: UITextView!
     let locationManager = CLLocationManager()
     
+    var emergencyType: String!
+    
     var locationLat: Double = 0
     var locationLong: Double = 0
+    
+    var successfulSubmission: Bool = false
     
     @IBOutlet var mapView: MKMapView!
     
@@ -61,11 +60,6 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         self.message.layer.borderColor = UIColor.lightGray.cgColor
         self.message.layer.borderWidth = 1
         self.message.accessibilityIdentifier = "descriptionTV"
-
-        // keyboard observer
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,17 +92,16 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         locationLong = locValue.longitude
         
         currentLocation()
-        
-//        activityIndicator.hidesWhenStopped = true
     }
     
     func willLoadData() {
         activityIndicator?.startAnimating()
     }
     
-    func didLoadData(title: String, message: String) {
-        sleep(3)
+    func didLoadData(title: String, message: String, isSuccessful: Bool) {
+
         activityIndicator?.stopAnimating()
+        successfulSubmission = isSuccessful
         alert(title: title, message: message)
     }
     
@@ -125,9 +118,6 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         
         locationLat = annotation.coordinate.latitude
         locationLong = annotation.coordinate.longitude
-        
-        // set the location on the model to the new location
-//        reportViewModel.addLocation(lat: annotation.coordinate.latitude, long: annotation.coordinate.longitude)
     }
     
     /*
@@ -152,52 +142,21 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
 
     }
     
-
-    /*
-     *
-     * show keyboard and move view up
-     *
-     */
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    /*
-     *
-     * hide keyboard move view down
-     *
-     */
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
     @IBAction func submitButton(_ sender: Any) {
-        
-        // add current date to view model
-//        reportViewModel.addDate()
-        
         // check if description length is less than 10 or greater than 160
         // if so, then alert user to meet the specified length
         if message.text.count < 10 || message.text.count > 160 {
-            
-            let alertController:UIAlertController = UIAlertController(title: "Error", message: "Make sure you description is more than 10 characters and less than 160 characters", preferredStyle: UIAlertController.Style.alert)
-            
-            let alertAction:UIAlertAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default, handler:nil)
-            alertController.addAction(alertAction)
-            present(alertController, animated: true, completion: nil)
+            alert(title: "Error", message: "Make sure you description is more than 10 characters and less than 160 characters")
         } else {
-            reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
-            
             let reqBody = "\(emergencyType!) - \(message.text!) - Location: \(locationLat), \(locationLong)"
-            
             // api call
             apiViewModel.sendSMS(reqBody: reqBody)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute:{
+                if self.successfulSubmission{
+                    self.reportViewModel.addReport( emergencyType: self.emergencyType, message: self.message.text!, langitude: self.locationLong, latitude: self.locationLat)
+                }
+            })
         }
     }
 }

@@ -17,19 +17,8 @@ class EmergencyTypeVC: UIViewController {
     var settings: [Setting]?
     @IBOutlet weak var faceIdSwitch: UISwitch!
     
-    // load view model function, triggers when scene is loaded
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-//        sampleData()
-    }
-    
     // viwe will appear, triggers before scene is loaded
     override func viewWillAppear(_ animated: Bool) {
-        
-//        let prevVC = LoginVC()
-//        print(faceId)
         
         // assign the get Setting returned value to seetings varaible
         settings = settingViemModel.getSettings()
@@ -38,26 +27,6 @@ class EmergencyTypeVC: UIViewController {
         // set the switch value based on the value from the core data
         faceIdSwitch.setOn(faceId, animated: true)
     }
-    
-//    func sampleData() {
-//        reportViewModel.addDate()
-//        reportViewModel.addMessage(msg: "heart attack!")
-//        reportViewModel.addEmergency(type: Emergency.ambulance)
-//        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
-//        Global.shared.reports.append(reportViewModel)
-//        
-//        reportViewModel.addDate()
-//        reportViewModel.addMessage(msg: "car accedent and a huge fire!")
-//        reportViewModel.addEmergency(type: Emergency.fireFighter)
-//        reportViewModel.addLocation(lat: -33.8688, long: 151.2093)
-//        Global.shared.reports.append(reportViewModel)
-//        
-//        reportViewModel.addDate()
-//        reportViewModel.addMessage(msg: "a theif stole woolworths!")
-//        reportViewModel.addEmergency(type: Emergency.police)
-//        reportViewModel.addLocation(lat: -37.8136, long: 144.9631)
-//        Global.shared.reports.append(reportViewModel)
-//    }
 
     // sign out button
     @IBAction func signoutButton(_ sender: Any) {

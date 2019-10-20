@@ -13,12 +13,7 @@ class ApiViewModel{
         }
     }
     
-//    var delegate: ViewModelDelegate?
-    
     func sendSMS(reqBody: String) {
         api.sendReport(with: reqBody)
     }
-    
-    
-
 }
