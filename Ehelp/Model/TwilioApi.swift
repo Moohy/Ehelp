@@ -16,13 +16,18 @@ class TwilioApi
         let from = "+12055259360"
         let to = "+61478110131"
         
+        // sms body
         let message = "\(body)"
         
+        // prepare url and httpbody
         if let url = URL(string: "https://\(SID):\(secret)@api.twilio.com/2010-04-01/Accounts/\(SID)/Messages.json")
         {
             var request = URLRequest(url: url)
+            // post
             request.httpMethod = "POST"
+            // content type
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            // request body
             request.httpBody = NSMutableData(data: "From=\(from)&To=\(to)&Body=\(message)".data(using: .utf8)!) as Data
             sendSMS(request)
         }
@@ -30,6 +35,7 @@ class TwilioApi
     
     private func sendSMS(_ request: URLRequest)
     {
+        // delegate and start activity indicator
         self.delegate?.willLoadData()
         
         let task = session.dataTask(with: request, completionHandler: {
@@ -58,7 +64,7 @@ class TwilioApi
                         self.delegate?.didLoadData(title: "Unsuccessfull Submission", message: "Something went wrong!", isSuccessful: false)
                     })
                 } else {
-                    // successful submission
+                    // successful submission pass alert and true
                     DispatchQueue.main.async(execute:{
                         self.delegate?.didLoadData(title: "Seccussfull Submission", message: "Report has been filed successfully", isSuccessful: true)
                     })
