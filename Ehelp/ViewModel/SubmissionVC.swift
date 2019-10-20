@@ -192,7 +192,7 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
         } else {
-            reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, langitude: locationLong, latitude: locationLat)
+            reportViewModel.addReport( emergencyType: emergencyType, message: message.text!, longitude: locationLong, latitude: locationLat)
             
             let reqBody = "\(emergencyType!) - \(message.text!) - Location: \(locationLat), \(locationLong)"
             

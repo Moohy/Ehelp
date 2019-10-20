@@ -30,7 +30,7 @@ class ReportManager{
         print()
     }
     // create a report core-data instance and return it
-    private func createNsReport(date: String, emergencyType: String, message: String, langitude: Double, latitude: Double) -> Report{
+    private func createNsReport(date: String, emergencyType: String, message: String, longitude: Double, latitude: Double) -> Report{
         // create a report entity
         let reportEntity = NSEntityDescription .entity(forEntityName: "Report" , in: managedContext)!
         // create an NS report entity
@@ -40,7 +40,7 @@ class ReportManager{
         nsReport.setValue(date, forKeyPath: "date")
         nsReport.setValue(emergencyType, forKeyPath: "emergencyType")
         nsReport.setValue(message, forKeyPath: "message")
-        nsReport.setValue(langitude, forKeyPath: "longitude")
+        nsReport.setValue(longitude, forKeyPath: "longitude")
         nsReport.setValue(latitude, forKeyPath: "latitude")
         
         // return NS object of the report entity
@@ -86,12 +86,14 @@ class ReportManager{
     }
     
     // add report to the report core-data
-    func addReport(emergencyType: String, message: String, langitude: Double, latitude: Double){
-        
+    func addReport(emergencyType: String, message: String, longitude: Double, latitude: Double){
+        if message.count > 160 || message.count < 10 {
+            return
+        }
         // call current data model to get the current date since we are not asking users for it
         let currDate = CurrentDate().setDate()
         // call create report function to create a new report
-        let report = createNsReport(date: currDate, emergencyType: emergencyType, message: message, langitude: langitude, latitude: latitude)
+        let report = createNsReport(date: currDate, emergencyType: emergencyType, message: message, longitude: longitude, latitude: latitude)
         // append the created report to the reports array
         reports.append(report)
         do

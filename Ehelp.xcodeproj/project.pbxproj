@@ -29,6 +29,7 @@
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
 		10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */; };
+		10C7DCB2235C2EE1005CA2A3 /* SettingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */; };
 		10D87CB5235700FA0094595E /* Setting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */; };
 		10D87CB6235700FA0094595E /* Report+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB2235700F90094595E /* Report+CoreDataClass.swift */; };
 		10D87CB7235700FA0094595E /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */; };
@@ -90,6 +91,7 @@
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
 		10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
+		10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTests.swift; sourceTree = "<group>"; };
 		10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataProperties.swift"; path = "Ehelp/Model/Report+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB2235700F90094595E /* Report+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataClass.swift"; path = "Ehelp/Model/Report+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Setting+CoreDataClass.swift"; path = "Ehelp/Model/Setting+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -178,6 +180,7 @@
 			children = (
 				10417157231D0695006EE103 /* UserTests.swift */,
 				10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */,
+				10C7DCB1235C2EE1005CA2A3 /* SettingTests.swift */,
 				10417159231D0695006EE103 /* Info.plist */,
 			);
 			path = EhelpTests;
@@ -534,6 +537,7 @@
 			files = (
 				10417158231D0695006EE103 /* UserTests.swift in Sources */,
 				10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */,
+				10C7DCB2235C2EE1005CA2A3 /* SettingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

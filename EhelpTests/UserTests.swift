@@ -14,6 +14,12 @@ class UserTests: XCTestCase {
         // initialize testable mode
         user = User()
 
+        
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
         // clear variables
         userEmail = ""
         userPhoneNumber = ""
@@ -21,16 +27,6 @@ class UserTests: XCTestCase {
         
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        
-        
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testValidUserData() {
         
@@ -64,6 +60,32 @@ class UserTests: XCTestCase {
         
         // check if isValidID will return false on valid ID
         XCTAssertFalse(user.isValidID(id: userID) == true)
+        
+    }
+    
+    func testLenghtAndNotNilValues() {
+        
+        // assign valid data
+        userEmail = "m.4848.mhotmailcom"
+        userPhoneNumber = "+61466636990"
+        userID = "sss3756190"
+        
+        // check if user email doesn't equal nil
+        XCTAssertNotNil(userEmail)
+        
+        // check if user phone number doesn't equal nil
+        XCTAssertNotNil(userPhoneNumber)
+        
+        // check if user ID doesn't equal nil
+        XCTAssertNotNil(userID)
+        
+        // check if phone number length equal 12
+        XCTAssertEqual(userPhoneNumber.count, 12)
+        
+        // check if ID length equal 10
+        XCTAssertEqual(userID.count, 10)
+        
+
     }
 
 }
