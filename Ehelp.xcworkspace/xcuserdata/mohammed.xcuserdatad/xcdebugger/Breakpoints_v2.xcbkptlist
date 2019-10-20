@@ -10,8 +10,24 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+            filePath = "Ehelp/ViewModel/SignupVC.swift"
+            timestampString = "593239319.390962"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "SignupVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
             filePath = "Ehelp/Model/Report+CoreDataClass.swift"
-            timestampString = "593171461.249241"
+            timestampString = "592913132.783641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -27,7 +43,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Ehelp/Model/Global.swift"
-            timestampString = "593236351.625064"
+            timestampString = "593090776.600722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3"

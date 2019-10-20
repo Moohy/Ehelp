@@ -93,14 +93,22 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
         }
     }
     
+    /*
+    *   Delegate function will start activity indicator
+    */
     func willLoadData() {
         activityIndicator?.startAnimating()
     }
     
+    /*
+     *   Delegate function will stop activity indicator and alert the user of the request result
+     */
     func didLoadData(title: String, message: String, isSuccessful: Bool) {
-
         activityIndicator?.stopAnimating()
+        
+        //set to true if api request is success
         successfulSubmission = isSuccessful
+        
         alert(title: title, message: message)
     }
     
@@ -127,10 +135,10 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
     func currentLocation() {
         var locValue:CLLocationCoordinate2D = CLLocationCoordinate2D()
 
+        // (latitude, longitude)
         locValue.latitude = locationLat
         locValue.longitude = locationLong
         
-        print(locationLat, ", ", locationLong)
         //zoom of the map
         let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         let region = MKCoordinateRegion(center: locValue, span: span)
@@ -151,8 +159,10 @@ class SubmissionVC: UIViewController, ViewModelDelegate {
             // api call
             apiViewModel.sendSMS(reqBody: reqBody)
             
+            // run this on the main thread after 3 s so it can get the data back from the delegate
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute:{
                 if self.successfulSubmission{
+                    // add to core data if successful request
                     self.reportViewModel.addReport( emergencyType: self.emergencyType, message: self.message.text!, longitude: self.locationLong, latitude: self.locationLat)
                 }
             })
