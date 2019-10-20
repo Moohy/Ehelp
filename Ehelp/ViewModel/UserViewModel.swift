@@ -44,4 +44,20 @@ struct UserViewModel {
     mutating func setPhoneNum(phoneNum: String) {
         user.setPhoneNum(phoneNum: phoneNum)
     }
+    
+    // get true or false values based on the validity of the email
+    mutating func getEmailValidity(email: String) -> Bool {
+        return user.isValidEmail(email: email)
+        
+    }
+    
+    // get true or false values based on the validity of the phone number
+    mutating func getPhoneNumberValidity(phoneNumber: String) -> Bool {
+        return user.isValidPhoneNumber(phoneNumber: phoneNumber)
+    }
+    
+    // get true or false values based on the validity of the ID
+    mutating func getIDValidity(id: String) -> Bool {
+        return user.isValidID(id: id)
+    }
 }

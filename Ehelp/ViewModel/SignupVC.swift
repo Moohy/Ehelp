@@ -15,64 +15,6 @@ class SignupVC: UIViewController {
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var phoneNum: UITextField!
     
-    override func viewDidLoad() {
-        // keyboard observer
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-//    /*
-//     *
-//     * show keyboard and move view up
-//     *
-//     */
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    /*
-//     *
-//     * hide keyboard move view down
-//     *
-//     */
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
-//        }
-//    }
-
-    
-    /*
-     *
-     * check validity of the email and return true/false based on that
-     *
-     */
-    func isValidEmail(email:String) -> Bool {
-        // email regular expression
-        let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
-        // test if email is valid
-        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
-        // return either true or false
-        return emailTest.evaluate(with: email)
-    }
-    /*
-     *
-     * check validity of the phone number and return true/false based on that
-     *
-     */
-    func isValidPhoneNumber(phoneNumber:String) -> Bool {
-        // phone number regular expression
-        let phoneRegEx = "^\\+[\\d]{11}$"
-        // test if phone number is valid
-        let phoneTest = NSPredicate(format:"SELF MATCHES[c] %@", phoneRegEx)
-        // return either true or false
-        return phoneTest.evaluate(with: phoneNumber)
-    }
-    
     /*
      *
      * checks the validity of all information that has been entered to
@@ -90,13 +32,18 @@ class SignupVC: UIViewController {
             return false
         }
         // alert if email is invalid
-        if (isValidEmail(email: email.text!) == false) {
+        if (userViewModel.getEmailValidity(email: email.text!) == false) {
             alert(title: "Error", message: "Email is Invalid")
             return false
         }
         // alert if email is invalid
-        if (isValidPhoneNumber(phoneNumber: phoneNum.text!) == false) {
+        if (userViewModel.getPhoneNumberValidity(phoneNumber: phoneNum.text!) == false) {
             alert(title: "Error", message: "Phone Number is Invalid.\nPhone number format : +12345678910")
+            return false
+        }
+        // alert if ID is invalid
+        if (userViewModel.getIDValidity(id: id.text!) == false) {
+            alert(title: "Error", message: "ID is Invalid.\nID must be exactly 10 characters format : id12345678")
             return false
         }
         return true
@@ -106,7 +53,7 @@ class SignupVC: UIViewController {
     @IBAction func signupButton(_ sender: Any) {
         
         // validity check if all information are typed into the text fields + email and phone number are valid
-        if((isValidInformation())&&(isValidEmail(email: email.text ?? ""))){
+        if((isValidInformation())){
             Auth.auth().createUser(withEmail: email.text!, password: password.text!){ (user, error) in
             // if there is no error
             if error == nil {

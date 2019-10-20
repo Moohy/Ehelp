@@ -344,6 +344,7 @@ class EhelpUITests: XCTestCase {
         
         // sign up
         app.buttons[" Sign Up"].tap()
+//        app.buttons[" Cancel"].tap()
     
         
     }
