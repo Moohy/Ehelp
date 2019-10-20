@@ -304,11 +304,11 @@ class EhelpUITests: XCTestCase {
     
     func signUp(){
         
-        let validEmail = "m.4848.m@hotmail.com"
+//        let validEmail = "m.4848.m@hotmail.com"
         let validPassword = "123456"
         let validFullName = "Mohammed Alotaibi"
-        let validID = "123456"
-        let validPhoneNumber = "123456789"
+        let validID = "1234567890"
+        let validPhoneNumber = "+61123456789"
         
         // get reference to the app
         let app = XCUIApplication()
@@ -317,10 +317,10 @@ class EhelpUITests: XCTestCase {
         app.buttons[" Sign Up"].tap()
         
         // email field
-        let emailTextField = app.textFields["Email"]
-        emailTextField.tap()
+//        let emailTextField = app.textFields["Email"]
+//        emailTextField.tap()
         // type valid email
-        emailTextField.typeText(validEmail)
+//        emailTextField.typeText(validEmail)
         // password field
         let passwordTextField = app.textFields["Password"]
         passwordTextField.tap()

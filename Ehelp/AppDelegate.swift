@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import IQKeyboardManagerSwift
                 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -68,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         FirebaseApp.configure()
         self.saveContext()
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
