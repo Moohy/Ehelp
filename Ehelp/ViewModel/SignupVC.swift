@@ -15,38 +15,6 @@ class SignupVC: UIViewController {
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var phoneNum: UITextField!
     
-    override func viewDidLoad() {
-        // keyboard observer
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    /*
-     *
-     * show keyboard and move view up
-     *
-     */
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    /*
-     *
-     * hide keyboard move view down
-     *
-     */
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-
-    
-    
     /*
      *
      * checks the validity of all information that has been entered to

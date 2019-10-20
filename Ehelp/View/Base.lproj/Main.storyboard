@@ -217,26 +217,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone No." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfm-ha-vQx">
-                                <rect key="frame" x="16" y="182" width="288" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-q8-mlb">
+                                <rect key="frame" x="16" y="106" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YO-h6-ly1">
                                 <rect key="frame" x="16" y="144" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nns-q8-mlb">
-                                <rect key="frame" x="16" y="106" width="288" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone No." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vfm-ha-vQx">
+                                <rect key="frame" x="16" y="182" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="3q5-bP-gXl">
-                                <rect key="frame" x="105" y="220" width="99" height="71"/>
+                                <rect key="frame" x="100" y="220" width="120" height="71"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQt-Sc-3Id">
-                                        <rect key="frame" x="0.0" y="0.0" width="99" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="0nt-MI-TlY"/>
+                                        </constraints>
                                         <state key="normal" title=" Sign Up" image="icons8-registration-30">
                                             <color key="titleColor" red="0.075182554590000006" green="0.35777064850000001" blue="0.60559018779999996" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -245,7 +248,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I9p-L2-Cg1">
-                                        <rect key="frame" x="0.0" y="41" width="99" height="30"/>
+                                        <rect key="frame" x="0.0" y="41" width="120" height="30"/>
                                         <state key="normal" title=" Cancel" image="icons8-cancel-30">
                                             <color key="titleColor" red="0.075182554590000006" green="0.35777064850000001" blue="0.60559018779999996" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -259,11 +262,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FZt-0P-e8a" firstAttribute="trailing" secondItem="eMi-V4-6dE" secondAttribute="trailing" constant="16" id="257-Qo-Q1K"/>
+                            <constraint firstItem="3q5-bP-gXl" firstAttribute="top" secondItem="Vfm-ha-vQx" secondAttribute="bottom" constant="8" symbolic="YES" id="4Me-Jq-E5m"/>
                             <constraint firstItem="FZt-0P-e8a" firstAttribute="trailing" secondItem="4YO-h6-ly1" secondAttribute="trailing" constant="16" id="4hG-OM-GiY"/>
-                            <constraint firstItem="eMi-V4-6dE" firstAttribute="top" secondItem="z2z-zt-NYk" secondAttribute="top" priority="992" constant="100" id="6BJ-Yh-O6o"/>
+                            <constraint firstItem="eMi-V4-6dE" firstAttribute="top" secondItem="z2z-zt-NYk" secondAttribute="top" priority="992" constant="30" id="6BJ-Yh-O6o"/>
                             <constraint firstItem="4YO-h6-ly1" firstAttribute="top" secondItem="Nns-q8-mlb" secondAttribute="bottom" constant="8" id="8VQ-o9-QK0"/>
-                            <constraint firstItem="3q5-bP-gXl" firstAttribute="top" secondItem="Vfm-ha-vQx" secondAttribute="bottom" constant="8" symbolic="YES" id="Ac9-d8-Zrh"/>
                             <constraint firstItem="Azd-sw-vah" firstAttribute="leading" secondItem="FZt-0P-e8a" secondAttribute="leading" constant="16" id="Gj3-pc-xlm"/>
+                            <constraint firstItem="3q5-bP-gXl" firstAttribute="centerX" secondItem="FZt-0P-e8a" secondAttribute="centerX" id="IX5-0C-zrJ"/>
                             <constraint firstItem="4YO-h6-ly1" firstAttribute="leading" secondItem="FZt-0P-e8a" secondAttribute="leading" constant="16" id="JAK-yk-w72"/>
                             <constraint firstItem="Nns-q8-mlb" firstAttribute="leading" secondItem="FZt-0P-e8a" secondAttribute="leading" constant="16" id="LC3-f6-WrY"/>
                             <constraint firstItem="FZt-0P-e8a" firstAttribute="trailing" secondItem="Azd-sw-vah" secondAttribute="trailing" constant="16" id="TW9-NR-YdN"/>
@@ -274,7 +278,6 @@
                             <constraint firstItem="Vfm-ha-vQx" firstAttribute="top" secondItem="4YO-h6-ly1" secondAttribute="bottom" constant="8" id="jC9-EB-QsB"/>
                             <constraint firstItem="Azd-sw-vah" firstAttribute="top" secondItem="eMi-V4-6dE" secondAttribute="bottom" constant="8" id="nJ0-kA-eac"/>
                             <constraint firstItem="eMi-V4-6dE" firstAttribute="top" relation="lessThanOrEqual" secondItem="z2z-zt-NYk" secondAttribute="top" constant="30" id="uOs-HY-jUx"/>
-                            <constraint firstItem="Vfm-ha-vQx" firstAttribute="leading" secondItem="3q5-bP-gXl" secondAttribute="trailing" constant="-188" id="vu7-hr-MIv"/>
                             <constraint firstItem="Nns-q8-mlb" firstAttribute="top" secondItem="Azd-sw-vah" secondAttribute="bottom" constant="8" id="z4k-Ed-f4J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FZt-0P-e8a"/>

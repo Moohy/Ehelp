@@ -4,6 +4,7 @@
 # For example, to use Firebase Authentication and Cloud Firestore
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+pod 'IQKeyboardManagerSwift'
 
 target 'Ehelp' do
   # Comment the next line if you don't want to use dynamic frameworks
