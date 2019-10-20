@@ -88,7 +88,7 @@ class LoginVC: UIViewController {
      
     face Id code starts here
      */
-
+ 
     @objc fileprivate func handleFaceId() {
         let context = LAContext()
         
