@@ -1,7 +1,14 @@
-import XCTest
-@testable import Ehelp
+//
+//  ReportTests.swift
+//  EhelpTests
+//
+//  Created by Mohammed Alosaimi on 20/10/19.
+//  Copyright © 2019 Mohammed. All rights reserved.
+//
 
-class EhelpTests: XCTestCase {
+import XCTest
+
+class ReportTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

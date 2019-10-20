@@ -14,7 +14,7 @@
 		10417148231D0692006EE103 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10417146231D0692006EE103 /* Main.storyboard */; };
 		1041714A231D0695006EE103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10417149231D0695006EE103 /* Assets.xcassets */; };
 		1041714D231D0695006EE103 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1041714B231D0695006EE103 /* LaunchScreen.storyboard */; };
-		10417158231D0695006EE103 /* EhelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417157231D0695006EE103 /* EhelpTests.swift */; };
+		10417158231D0695006EE103 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417157231D0695006EE103 /* UserTests.swift */; };
 		10417163231D0695006EE103 /* EhelpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10417162231D0695006EE103 /* EhelpUITests.swift */; };
 		1041717423224B4C006EE103 /* EmergencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717323224B4C006EE103 /* EmergencyType.swift */; };
 		1041717623225028006EE103 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1041717523225028006EE103 /* Global.swift */; };
@@ -28,6 +28,7 @@
 		10BEC5012344C226009FE340 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10BEC5002344C226009FE340 /* GoogleService-Info.plist */; };
 		10C4238D232779B200CFD15A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238C232779B200CFD15A /* ProfileCell.swift */; };
 		10C4238F232779F300CFD15A /* ProfileTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C4238E232779F300CFD15A /* ProfileTableVC.swift */; };
+		10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */; };
 		10D87CB5235700FA0094595E /* Setting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */; };
 		10D87CB6235700FA0094595E /* Report+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB2235700F90094595E /* Report+CoreDataClass.swift */; };
 		10D87CB7235700FA0094595E /* Report+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */; };
@@ -71,7 +72,7 @@
 		1041714C231D0695006EE103 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1041714E231D0695006EE103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10417153231D0695006EE103 /* EhelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EhelpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		10417157231D0695006EE103 /* EhelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EhelpTests.swift; sourceTree = "<group>"; };
+		10417157231D0695006EE103 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		10417159231D0695006EE103 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1041715E231D0695006EE103 /* EhelpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EhelpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10417162231D0695006EE103 /* EhelpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EhelpUITests.swift; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		10BEC5002344C226009FE340 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C4238C232779B200CFD15A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		10C4238E232779F300CFD15A /* ProfileTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableVC.swift; sourceTree = "<group>"; };
+		10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTests.swift; sourceTree = "<group>"; };
 		10D87CB1235700F90094595E /* Report+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataProperties.swift"; path = "Ehelp/Model/Report+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB2235700F90094595E /* Report+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Report+CoreDataClass.swift"; path = "Ehelp/Model/Report+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		10D87CB3235700F90094595E /* Setting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Setting+CoreDataClass.swift"; path = "Ehelp/Model/Setting+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -174,7 +176,8 @@
 		10417156231D0695006EE103 /* EhelpTests */ = {
 			isa = PBXGroup;
 			children = (
-				10417157231D0695006EE103 /* EhelpTests.swift */,
+				10417157231D0695006EE103 /* UserTests.swift */,
+				10C7DCAF235C1E41005CA2A3 /* ReportTests.swift */,
 				10417159231D0695006EE103 /* Info.plist */,
 			);
 			path = EhelpTests;
@@ -529,7 +532,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10417158231D0695006EE103 /* EhelpTests.swift in Sources */,
+				10417158231D0695006EE103 /* UserTests.swift in Sources */,
+				10C7DCB0235C1E41005CA2A3 /* ReportTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
